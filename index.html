@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -20,7 +21,7 @@
         body {
             min-height: 100vh;
             background: #05070c;
-            color: #ffffff;
+            color: #fff;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -35,12 +36,12 @@
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(45, 140, 255, 0.18),
+                    rgba(45, 140, 255, .18),
                     transparent 45%
                 ),
                 radial-gradient(
                     circle at 15% 80%,
-                    rgba(20, 100, 255, 0.08),
+                    rgba(20, 100, 255, .08),
                     transparent 30%
                 );
         }
@@ -56,8 +57,8 @@
             align-items: center;
             justify-content: center;
 
-            background: rgba(5, 7, 12, 0.90);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(5, 7, 12, .9);
+            border-bottom: 1px solid rgba(255,255,255,.07);
 
             backdrop-filter: blur(12px);
         }
@@ -88,15 +89,13 @@
         }
 
         .badge {
-            display: inline-block;
-
             padding: 8px 16px;
             margin-bottom: 26px;
 
             border-radius: 999px;
 
-            background: rgba(55, 145, 255, 0.08);
-            border: 1px solid rgba(55, 145, 255, 0.25);
+            background: rgba(55,145,255,.08);
+            border: 1px solid rgba(55,145,255,.25);
 
             color: #69b1ff;
 
@@ -109,12 +108,10 @@
             margin-bottom: 24px;
 
             font-size: clamp(48px, 9vw, 100px);
-            line-height: 0.95;
+            line-height: .95;
 
             font-weight: 900;
             letter-spacing: -4px;
-
-            color: #ffffff;
         }
 
         .blue {
@@ -123,7 +120,6 @@
 
         .description {
             max-width: 620px;
-
             margin-bottom: 36px;
 
             color: #8e98a8;
@@ -138,94 +134,334 @@
             justify-content: center;
 
             min-width: 150px;
-
             padding: 15px 30px;
 
             border-radius: 10px;
 
             background: #2388ff;
-            color: #ffffff;
+            color: white;
 
             text-decoration: none;
 
             font-size: 16px;
             font-weight: 700;
 
-            cursor: pointer;
+            box-shadow: 0 10px 35px rgba(35,136,255,.25);
 
-            box-shadow:
-                0 10px 35px rgba(35, 136, 255, 0.25);
-
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                box-shadow 0.25s ease;
+            transition: .25s ease;
         }
 
         .download:hover {
             transform: translateY(-3px);
-
             background: #3995ff;
-
-            box-shadow:
-                0 15px 45px rgba(35, 136, 255, 0.40);
+            box-shadow: 0 15px 45px rgba(35,136,255,.4);
         }
 
-        .download:active {
-            transform: translateY(-1px);
-        }
+        /* CLIENT PREVIEW */
 
-        /* KLEINERE BILD-VORSCHAU */
         .preview {
-            width: min(1100px, 88vw);
-
+            width: min(1100px, 92vw);
             margin-top: 80px;
-
-            overflow: hidden;
 
             border-radius: 18px;
 
             background: #080b12;
 
-            border: 1px solid rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255,255,255,.1);
 
             box-shadow:
-                0 35px 100px rgba(0, 0, 0, 0.70),
-                0 0 100px rgba(30, 130, 255, 0.08);
+                0 35px 100px rgba(0,0,0,.7),
+                0 0 100px rgba(30,130,255,.08);
+
+            overflow: hidden;
+            text-align: left;
         }
 
-        .preview img {
-            display: block;
+        .client-top {
+            height: 58px;
 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 22px;
+
+            background: #0b0f18;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .client-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .client-title span {
+            color: #4da6ff;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #758094;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: #35d98b;
+
+            box-shadow: 0 0 12px rgba(53,217,139,.7);
+        }
+
+        .client-body {
+            display: flex;
+            min-height: 510px;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 210px;
+
+            padding: 20px 12px;
+
+            background: #080c14;
+            border-right: 1px solid rgba(255,255,255,.06);
+        }
+
+        .category {
+            color: #596579;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin: 8px 10px 10px;
+        }
+
+        .nav-button {
             width: 100%;
-            height: auto;
 
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px 13px;
+            margin-bottom: 5px;
+
+            border: 0;
+            border-radius: 8px;
+
+            background: transparent;
+            color: #79869a;
+
+            text-align: left;
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: .2s;
         }
 
-        @media (max-width: 600px) {
-            nav {
-                height: 65px;
+        .nav-button:hover,
+        .nav-button.active {
+            color: white;
+            background: rgba(63,153,255,.12);
+        }
+
+        .nav-button.active {
+            box-shadow: inset 2px 0 #3d9bff;
+        }
+
+        /* CONTENT */
+
+        .client-content {
+            flex: 1;
+            padding: 30px;
+            background:
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(35,136,255,.07),
+                    transparent 35%
+                );
+        }
+
+        .content-header {
+            margin-bottom: 25px;
+        }
+
+        .content-header h2 {
+            font-size: 25px;
+            margin-bottom: 6px;
+        }
+
+        .content-header p {
+            color: #68758a;
+            font-size: 13px;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .module {
+            padding: 18px;
+
+            border-radius: 12px;
+
+            background: rgba(12,17,27,.9);
+            border: 1px solid rgba(255,255,255,.06);
+
+            transition: .2s;
+        }
+
+        .module:hover {
+            border-color: rgba(67,156,255,.3);
+            transform: translateY(-2px);
+        }
+
+        .module-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 10px;
+        }
+
+        .module-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .module-description {
+            color: #657186;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        /* SWITCH */
+
+        .switch {
+            position: relative;
+
+            width: 42px;
+            height: 22px;
+
+            flex-shrink: 0;
+
+            border-radius: 20px;
+
+            background: #202735;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .switch::after {
+            content: "";
+
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+
+            top: 3px;
+            left: 3px;
+
+            border-radius: 50%;
+
+            background: #8792a3;
+
+            transition: .2s;
+        }
+
+        .switch.on {
+            background: #2388ff;
+            box-shadow: 0 0 15px rgba(35,136,255,.3);
+        }
+
+        .switch.on::after {
+            left: 23px;
+            background: white;
+        }
+
+        /* SLIDER */
+
+        .slider-box {
+            margin-top: 18px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+
+            color: #aeb8c8;
+
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: #2388ff;
+            cursor: pointer;
+        }
+
+        .footer-status {
+            margin-top: 18px;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #526075;
+            font-size: 10px;
+        }
+
+        @media (max-width: 700px) {
+            .client-body {
+                flex-direction: column;
             }
 
-            .hero {
-                min-height: calc(100vh - 65px);
-                padding-top: 70px;
+            .sidebar {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+                border-right: 0;
+                border-bottom: 1px solid rgba(255,255,255,.06);
             }
 
-            h1 {
-                font-size: 52px;
-                letter-spacing: -3px;
+            .category {
+                display: none;
             }
 
-            .description {
-                font-size: 15px;
+            .nav-button {
+                min-width: 110px;
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+            .client-content {
+                padding: 20px;
             }
 
             .preview {
-                width: 92vw;
                 margin-top: 55px;
-                border-radius: 12px;
             }
         }
     </style>
@@ -233,40 +469,566 @@
 
 <body>
 
-    <nav>
-        <div class="logo">
-            <span>ASTRIX</span> CLIENT
+<nav>
+    <div class="logo">
+        <span>ASTRIX</span> CLIENT
+    </div>
+</nav>
+
+<main class="hero">
+
+    <div class="badge">
+        MINECRAFT CLIENT
+    </div>
+
+    <h1>
+        Built for <span class="blue">PvP</span>
+    </h1>
+
+    <p class="description">
+        Ein moderner Minecraft Client für ein schnelles,
+        cleanes und flüssiges Spielerlebnis.
+    </p>
+
+    <a
+        class="download"
+        href="https://github.com/Rushed101/mincraft-client/raw/refs/heads/main/astrixclient.exe"
+        download="astrixclient.exe"
+    >
+        Jetzt Holen
+    </a>
+
+
+    <!-- INTERAKTIVE CLIENT VORSCHAU -->
+
+    <div class="preview">
+
+        <div class="client-top">
+
+            <div class="client-title">
+                <span>ASTRIX</span> CLIENT
+            </div>
+
+            <div class="status">
+                <div class="status-dot"></div>
+                Client Connected
+            </div>
+
         </div>
-    </nav>
 
-    <main class="hero">
 
-        <div class="badge">
-            MINECRAFT CLIENT
+        <div class="client-body">
+
+            <aside class="sidebar">
+
+                <div class="category">
+                    COMBAT
+                </div>
+
+                <button class="nav-button active" onclick="showCategory('combat', this)">
+                    ⚔ Combat
+                </button>
+
+                <button class="nav-button" onclick="showCategory('visuals', this)">
+                    ◉ Visuals
+                </button>
+
+                <button class="nav-button" onclick="showCategory('movement', this)">
+                    ◆ Movement
+                </button>
+
+                <button class="nav-button" onclick="showCategory('player', this)">
+                    ● Player
+                </button>
+
+                <div class="category">
+                    OTHER
+                </div>
+
+                <button class="nav-button" onclick="showCategory('settings', this)">
+                    ⚙ Settings
+                </button>
+
+            </aside>
+
+
+            <section class="client-content">
+
+                <div class="content-header">
+
+                    <h2 id="category-title">
+                        Combat
+                    </h2>
+
+                    <p id="category-description">
+                        Configure your combat modules.
+                    </p>
+
+                </div>
+
+
+                <div class="modules" id="modules">
+
+
+                    <div class="module">
+
+                        <div class="module-top">
+
+                            <div class="module-name">
+                                Aim Assist
+                            </div>
+
+                            <div
+                                class="switch"
+                                onclick="toggleSwitch(this)"
+                            ></div>
+
+                        </div>
+
+                        <div class="module-description">
+                            Helps your aim while fighting.
+                        </div>
+
+                    </div>
+
+
+                    <div class="module">
+
+                        <div class="module-top">
+
+                            <div class="module-name">
+                                Reach
+                            </div>
+
+                            <div
+                                class="switch"
+                                onclick="toggleSwitch(this)"
+                            ></div>
+
+                        </div>
+
+                        <div class="module-description">
+                            Configure your attack range.
+                        </div>
+
+                        <div class="slider-box">
+
+                            <div class="slider-header">
+                                <span>Range</span>
+                                <span id="reachValue">3.0</span>
+                            </div>
+
+                            <input
+                                type="range"
+                                min="3"
+                                max="6"
+                                step=".1"
+                                value="3"
+                                oninput="document.getElementById('reachValue').textContent = this.value"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module">
+
+                        <div class="module-top">
+
+                            <div class="module-name">
+                                Velocity
+                            </div>
+
+                            <div
+                                class="switch"
+                                onclick="toggleSwitch(this)"
+                            ></div>
+
+                        </div>
+
+                        <div class="module-description">
+                            Configure knockback behaviour.
+                        </div>
+
+                    </div>
+
+
+                    <div class="module">
+
+                        <div class="module-top">
+
+                            <div class="module-name">
+                                Clicker
+                            </div>
+
+                            <div
+                                class="switch"
+                                onclick="toggleSwitch(this)"
+                            ></div>
+
+                        </div>
+
+                        <div class="module-description">
+                            Adjustable clicking module.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-status">
+
+                    <span>ASTRIX CLIENT v1.0</span>
+
+                    <span id="enabledCount">
+                        0 MODULES ENABLED
+                    </span>
+
+                </div>
+
+            </section>
+
         </div>
 
-        <h1>
-            Built for <span class="blue">PvP</span>
-        </h1>
+    </div>
 
-        <p class="description">
-            Ein moderner Minecraft Client für ein schnelles,
-            cleanes und flüssiges Spielerlebnis.
-        </p>
+</main>
 
-        <a
-            class="download"
-            href="https://github.com/Rushed101/mincraft-client/raw/refs/heads/main/astrixclient.exe"
-            download="astrixclient.exe"
-        >
-            Jetzt Holen
-        </a>
 
-        <div class="preview">
-            <img src="1.png" alt="Astrix Client Vorschau">
-        </div>
+<script>
 
-    </main>
+    function toggleSwitch(element) {
+
+        element.classList.toggle("on");
+
+        updateEnabledCount();
+    }
+
+
+    function updateEnabledCount() {
+
+        const enabled =
+            document.querySelectorAll(".switch.on").length;
+
+        document.getElementById("enabledCount").textContent =
+            enabled + " MODULE" + (enabled === 1 ? "" : "S") + " ENABLED";
+    }
+
+
+    function showCategory(category, button) {
+
+        document
+            .querySelectorAll(".nav-button")
+            .forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+
+        const title =
+            document.getElementById("category-title");
+
+        const description =
+            document.getElementById("category-description");
+
+        const modules =
+            document.getElementById("modules");
+
+
+        if (category === "combat") {
+
+            title.textContent = "Combat";
+
+            description.textContent =
+                "Configure your combat modules.";
+
+            modules.innerHTML = `
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Aim Assist</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Helps your aim while fighting.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Reach</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+
+                    <div class="module-description">
+                        Configure your attack range.
+                    </div>
+
+                    <div class="slider-box">
+
+                        <div class="slider-header">
+                            <span>Range</span>
+                            <span id="reachValue">3.0</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="3"
+                            max="6"
+                            step=".1"
+                            value="3"
+                            oninput="document.getElementById('reachValue').textContent=this.value"
+                        >
+
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Velocity</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Configure knockback behaviour.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Clicker</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Adjustable clicking module.
+                    </div>
+                </div>
+
+            `;
+        }
+
+
+        else if (category === "visuals") {
+
+            title.textContent = "Visuals";
+
+            description.textContent =
+                "Customize your visual experience.";
+
+            modules.innerHTML = `
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">ESP</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Highlights entities in the game.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Fullbright</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Makes dark areas brighter.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Tracers</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Displays visual lines to entities.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Name Tags</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Displays entity names.
+                    </div>
+                </div>
+
+            `;
+        }
+
+
+        else if (category === "movement") {
+
+            title.textContent = "Movement";
+
+            description.textContent =
+                "Configure movement modules.";
+
+            modules.innerHTML = `
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Sprint</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Automatically keeps sprint active.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Bunny Hop</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Movement enhancement module.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">No Slow</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Removes movement slowdown.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Safe Walk</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Helps prevent falling from edges.
+                    </div>
+                </div>
+
+            `;
+        }
+
+
+        else if (category === "player") {
+
+            title.textContent = "Player";
+
+            description.textContent =
+                "Player and utility modules.";
+
+            modules.innerHTML = `
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">FPS Boost</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Optimizes visual settings for performance.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Auto Sprint</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Automatically activates sprint.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Coordinates</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Displays player coordinates.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">CPS Counter</div>
+                        <div class="switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Shows clicks per second.
+                    </div>
+                </div>
+
+            `;
+        }
+
+
+        else if (category === "settings") {
+
+            title.textContent = "Settings";
+
+            description.textContent =
+                "Customize your Astrix Client.";
+
+            modules.innerHTML = `
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Blur Effects</div>
+                        <div class="switch on" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Enables interface blur effects.
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-top">
+                        <div class="module-name">Animations</div>
+                        <div class="switch on" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="module-description">
+                        Enables UI animations.
+                    </div>
+                </div>
+
+                <div class="module">
+
+                    <div class="module-name">
+                        GUI Scale
+                    </div>
+
+                    <div class="slider-box">
+
+                        <div class="slider-header">
+                            <span>Scale</span>
+                            <span id="scaleValue">100%</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="80"
+                            max="130"
+                            value="100"
+                            oninput="document.getElementById('scaleValue').textContent=this.value+'%'"
+                        >
+
+                    </div>
+
+                </div>
+
+            `;
+        }
+
+        updateEnabledCount();
+    }
+
+</script>
 
 </body>
 </html>
+```
