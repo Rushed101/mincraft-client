@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -36,12 +35,12 @@
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(45, 140, 255, .18),
+                    rgba(80, 55, 180, 0.18),
                     transparent 45%
                 ),
                 radial-gradient(
                     circle at 15% 80%,
-                    rgba(20, 100, 255, .08),
+                    rgba(35, 100, 255, 0.08),
                     transparent 30%
                 );
         }
@@ -57,7 +56,7 @@
             align-items: center;
             justify-content: center;
 
-            background: rgba(5, 7, 12, .9);
+            background: rgba(5, 7, 12, 0.90);
             border-bottom: 1px solid rgba(255,255,255,.07);
 
             backdrop-filter: blur(12px);
@@ -89,6 +88,8 @@
         }
 
         .badge {
+            display: inline-block;
+
             padding: 8px 16px;
             margin-bottom: 26px;
 
@@ -134,6 +135,7 @@
             justify-content: center;
 
             min-width: 150px;
+
             padding: 15px 30px;
 
             border-radius: 10px;
@@ -146,322 +148,575 @@
             font-size: 16px;
             font-weight: 700;
 
-            box-shadow: 0 10px 35px rgba(35,136,255,.25);
+            box-shadow:
+                0 10px 35px rgba(35,136,255,.25);
 
             transition: .25s ease;
         }
 
         .download:hover {
             transform: translateY(-3px);
+
             background: #3995ff;
-            box-shadow: 0 15px 45px rgba(35,136,255,.4);
-        }
-
-        /* CLIENT PREVIEW */
-
-        .preview {
-            width: min(1100px, 92vw);
-            margin-top: 80px;
-
-            border-radius: 18px;
-
-            background: #080b12;
-
-            border: 1px solid rgba(255,255,255,.1);
 
             box-shadow:
-                0 35px 100px rgba(0,0,0,.7),
-                0 0 100px rgba(30,130,255,.08);
-
-            overflow: hidden;
-            text-align: left;
+                0 15px 45px rgba(35,136,255,.4);
         }
 
-        .client-top {
-            height: 58px;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* =====================================================
+           ASTRIX GUI
+        ===================================================== */
 
-            padding: 0 22px;
-
-            background: #0b0f18;
-            border-bottom: 1px solid rgba(255,255,255,.07);
-        }
-
-        .client-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .client-title span {
-            color: #4da6ff;
-        }
-
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            color: #758094;
-            font-size: 12px;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-            background: #35d98b;
-
-            box-shadow: 0 0 12px rgba(53,217,139,.7);
-        }
-
-        .client-body {
-            display: flex;
-            min-height: 510px;
-        }
-
-        /* SIDEBAR */
-
-        .sidebar {
-            width: 210px;
-
-            padding: 20px 12px;
-
-            background: #080c14;
-            border-right: 1px solid rgba(255,255,255,.06);
-        }
-
-        .category {
-            color: #596579;
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 1.5px;
-
-            margin: 8px 10px 10px;
-        }
-
-        .nav-button {
+        .gui-wrapper {
             width: 100%;
-
             display: flex;
-            align-items: center;
-            gap: 10px;
-
-            padding: 12px 13px;
-            margin-bottom: 5px;
-
-            border: 0;
-            border-radius: 8px;
-
-            background: transparent;
-            color: #79869a;
-
-            text-align: left;
-            font-size: 13px;
-
-            cursor: pointer;
-
-            transition: .2s;
+            justify-content: center;
+            margin-top: 80px;
         }
 
-        .nav-button:hover,
-        .nav-button.active {
-            color: white;
-            background: rgba(63,153,255,.12);
-        }
+        .gui {
+            width: 500px;
+            min-height: 600px;
 
-        .nav-button.active {
-            box-shadow: inset 2px 0 #3d9bff;
-        }
-
-        /* CONTENT */
-
-        .client-content {
-            flex: 1;
-            padding: 30px;
-            background:
-                radial-gradient(
-                    circle at 80% 0%,
-                    rgba(35,136,255,.07),
-                    transparent 35%
-                );
-        }
-
-        .content-header {
-            margin-bottom: 25px;
-        }
-
-        .content-header h2 {
-            font-size: 25px;
-            margin-bottom: 6px;
-        }
-
-        .content-header p {
-            color: #68758a;
-            font-size: 13px;
-        }
-
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .module {
-            padding: 18px;
-
-            border-radius: 12px;
-
-            background: rgba(12,17,27,.9);
-            border: 1px solid rgba(255,255,255,.06);
-
-            transition: .2s;
-        }
-
-        .module:hover {
-            border-color: rgba(67,156,255,.3);
-            transform: translateY(-2px);
-        }
-
-        .module-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 10px;
-        }
-
-        .module-name {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .module-description {
-            color: #657186;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        /* SWITCH */
-
-        .switch {
             position: relative;
 
-            width: 42px;
-            height: 22px;
+            background: rgba(20,20,31,.97);
 
-            flex-shrink: 0;
+            border: 1px solid rgba(80,80,110,.85);
 
-            border-radius: 20px;
+            box-shadow:
+                0 35px 100px rgba(0,0,0,.75),
+                0 0 80px rgba(90,55,180,.08);
 
-            background: #202735;
+            text-align: left;
+
+            overflow: hidden;
+
+            transform-origin: center;
+            animation: guiOpen .35s cubic-bezier(.22,.8,.2,1);
+        }
+
+        @keyframes guiOpen {
+            from {
+                opacity: 0;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        /* TITLE BAR */
+
+        .titlebar {
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 10px 0 20px;
+
+            background: #1f1f2e;
+
+            border-bottom: 1px solid rgba(255,255,255,.04);
+        }
+
+        .title {
+            font-size: 13px;
+            font-weight: 600;
+
+            color: #e8e3f4;
+
+            text-shadow:
+                1px 1px 2px rgba(0,0,0,.8);
+        }
+
+        .close {
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #4d1b20;
+
+            color: #ff6666;
+
+            border: none;
+
+            font-size: 12px;
+            font-weight: bold;
 
             cursor: pointer;
 
-            transition: .2s;
+            transition: .15s;
         }
 
-        .switch::after {
+        .close:hover {
+            background: #70252c;
+        }
+
+
+        /* TABS */
+
+        .tabs {
+            height: 35px;
+
+            display: flex;
+
+            gap: 2px;
+
+            padding: 0 5px;
+
+            margin-top: 5px;
+        }
+
+        .tab {
+            flex: 1;
+
+            height: 35px;
+
+            border: none;
+
+            background: #17171f;
+
+            color: #80808b;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            position: relative;
+
+            transition: .15s;
+        }
+
+        .tab:hover {
+            background: #211d2c;
+            color: #aaa4b8;
+        }
+
+        .tab.active {
+            background: #261a40;
+            color: #cbbcff;
+        }
+
+        .tab.active::after {
             content: "";
 
             position: absolute;
 
-            width: 16px;
-            height: 16px;
+            left: 5px;
+            right: 5px;
+            bottom: 0;
 
-            top: 3px;
-            left: 3px;
+            height: 2px;
 
-            border-radius: 50%;
-
-            background: #8792a3;
-
-            transition: .2s;
+            background: #6633cc;
         }
 
-        .switch.on {
-            background: #2388ff;
-            box-shadow: 0 0 15px rgba(35,136,255,.3);
+
+        /* CONTENT */
+
+        .content {
+            height: 515px;
+
+            padding: 15px;
+
+            overflow-y: auto;
         }
 
-        .switch.on::after {
-            left: 23px;
-            background: white;
+        .content::-webkit-scrollbar {
+            width: 4px;
         }
+
+        .content::-webkit-scrollbar-track {
+            background: #111119;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #343040;
+        }
+
+
+        /* SECTION */
+
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .section-header {
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .section-header::before {
+            content: "";
+
+            width: 200px;
+            height: 1px;
+
+            position: absolute;
+
+            left: 0;
+            top: 15px;
+
+            background: rgba(100,100,130,.45);
+        }
+
+        .section-header span {
+            position: relative;
+
+            margin-left: 210px;
+
+            white-space: nowrap;
+
+            color: #b9b7c9;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        /* ROW */
+
+        .row {
+            min-height: 30px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            color: #c4c4ca;
+
+            font-size: 12px;
+        }
+
+        .row-label {
+            width: 160px;
+        }
+
+
+        /* TOGGLE */
+
+        .toggle {
+            width: 40px;
+            height: 20px;
+
+            position: relative;
+
+            background: #261c1d;
+
+            border: 1px solid #44414d;
+
+            cursor: pointer;
+
+            transition: .15s;
+        }
+
+        .toggle::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 18px;
+            height: 18px;
+
+            background: #e7e7e7;
+
+            border: 1px solid #333;
+
+            transition: .15s;
+        }
+
+        .toggle.active {
+            background: #33804a;
+        }
+
+        .toggle.active::after {
+            left: 20px;
+        }
+
 
         /* SLIDER */
 
-        .slider-box {
-            margin-top: 18px;
+        .slider-row {
+            min-height: 40px;
+
+            display: flex;
+            align-items: center;
         }
 
-        .slider-header {
-            display: flex;
-            justify-content: space-between;
+        .slider-label {
+            width: 180px;
 
-            color: #aeb8c8;
+            color: #c4c4ca;
 
             font-size: 12px;
-            margin-bottom: 10px;
         }
 
-        input[type="range"] {
-            width: 100%;
-            accent-color: #2388ff;
+        .slider-container {
+            width: 200px;
+
+            position: relative;
+        }
+
+        .slider {
+            width: 200px;
+            height: 6px;
+
+            appearance: none;
+
+            background: #272731;
+
+            outline: none;
+
             cursor: pointer;
         }
 
-        .footer-status {
-            margin-top: 18px;
+        .slider::-webkit-slider-thumb {
+            appearance: none;
 
-            display: flex;
-            justify-content: space-between;
+            width: 12px;
+            height: 14px;
 
-            color: #526075;
-            font-size: 10px;
+            background: #e8e8e8;
+
+            border: 1px solid #303030;
+
+            cursor: pointer;
         }
 
-        @media (max-width: 700px) {
-            .client-body {
-                flex-direction: column;
+        .slider::-moz-range-thumb {
+            width: 12px;
+            height: 14px;
+
+            background: #e8e8e8;
+
+            border: 1px solid #303030;
+
+            cursor: pointer;
+        }
+
+        .slider-value {
+            position: absolute;
+
+            right: -55px;
+            top: -5px;
+
+            width: 45px;
+
+            color: #aaa7b7;
+
+            font-size: 11px;
+
+            text-align: right;
+        }
+
+
+        /* DROPDOWN */
+
+        .dropdown {
+            width: 120px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6px;
+
+            background: #1f1f2e;
+
+            border: 1px solid #343442;
+
+            color: #c9c8d0;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .dropdown:hover {
+            border-color: #55457a;
+        }
+
+
+        /* COLOR */
+
+        .color-picker {
+            width: 50px;
+            height: 20px;
+
+            background: #cc3333;
+
+            border: 1px solid #343442;
+
+            cursor: pointer;
+        }
+
+
+        /* KEYBIND */
+
+        .keybind {
+            width: 100px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 5px;
+
+            background: #1f1f2e;
+
+            border: 1px solid #343442;
+
+            color: #aaa7b7;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .keybind:hover {
+            border-color: #604d88;
+        }
+
+        .keybind.waiting {
+            background: #3b194b;
+            color: #d9baff;
+        }
+
+
+        /* BUTTONS */
+
+        .button {
+            min-width: 100px;
+            height: 30px;
+
+            padding: 0 14px;
+
+            background: #1f172c;
+
+            border: 1px solid #45335f;
+
+            color: #e3e0e9;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            transition: .15s;
+        }
+
+        .button:hover {
+            background: #332052;
+
+            border-color: #6a4a96;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 5px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* PROFILE */
+
+        .current-profile {
+            margin: 5px;
+
+            color: #aaa7b7;
+
+            font-size: 12px;
+        }
+
+        .profile-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+        .profile {
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 10px;
+
+            background: #191923;
+
+            border: 1px solid #2f2e39;
+
+            color: #aaa7b7;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .profile:hover {
+            background: #28203b;
+            border-color: #50406d;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+                padding-top: 70px;
             }
 
-            .sidebar {
-                width: 100%;
-                display: flex;
-                overflow-x: auto;
-                border-right: 0;
-                border-bottom: 1px solid rgba(255,255,255,.06);
-            }
-
-            .category {
-                display: none;
-            }
-
-            .nav-button {
-                min-width: 110px;
-            }
-
-            .modules {
-                grid-template-columns: 1fr;
-            }
-
-            .client-content {
-                padding: 20px;
-            }
-
-            .preview {
+            .gui-wrapper {
                 margin-top: 55px;
+            }
+
+            .gui {
+                width: 94vw;
+                min-height: 600px;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .section-header span {
+                margin-left: 130px;
+            }
+
+            .section-header::before {
+                width: 125px;
+            }
+
+            .slider-label {
+                width: 125px;
+            }
+
+            .row-label {
+                width: 125px;
+            }
+
+            .slider-container,
+            .slider {
+                width: 150px;
             }
         }
     </style>
@@ -474,6 +729,7 @@
         <span>ASTRIX</span> CLIENT
     </div>
 </nav>
+
 
 <main class="hero">
 
@@ -499,196 +755,71 @@
     </a>
 
 
-    <!-- INTERAKTIVE CLIENT VORSCHAU -->
+    <!-- =====================================================
+         ASTRIX CLICK GUI
+    ====================================================== -->
 
-    <div class="preview">
+    <div class="gui-wrapper">
 
-        <div class="client-top">
+        <div class="gui" id="gui">
 
-            <div class="client-title">
-                <span>ASTRIX</span> CLIENT
+            <div class="titlebar">
+
+                <div class="title">
+                    Astrix Client v3.0
+                </div>
+
+                <button
+                    class="close"
+                    onclick="closeGui()"
+                >
+                    X
+                </button>
+
             </div>
 
-            <div class="status">
-                <div class="status-dot"></div>
-                Client Connected
+
+            <div class="tabs">
+
+                <button
+                    class="tab active"
+                    onclick="selectTab('combat', this)"
+                >
+                    Combat
+                </button>
+
+                <button
+                    class="tab"
+                    onclick="selectTab('movement', this)"
+                >
+                    Movement
+                </button>
+
+                <button
+                    class="tab"
+                    onclick="selectTab('render', this)"
+                >
+                    Render
+                </button>
+
+                <button
+                    class="tab"
+                    onclick="selectTab('settings', this)"
+                >
+                    Settings
+                </button>
+
+                <button
+                    class="tab"
+                    onclick="selectTab('config', this)"
+                >
+                    Config
+                </button>
+
             </div>
 
-        </div>
 
-
-        <div class="client-body">
-
-            <aside class="sidebar">
-
-                <div class="category">
-                    COMBAT
-                </div>
-
-                <button class="nav-button active" onclick="showCategory('combat', this)">
-                    ⚔ Combat
-                </button>
-
-                <button class="nav-button" onclick="showCategory('visuals', this)">
-                    ◉ Visuals
-                </button>
-
-                <button class="nav-button" onclick="showCategory('movement', this)">
-                    ◆ Movement
-                </button>
-
-                <button class="nav-button" onclick="showCategory('player', this)">
-                    ● Player
-                </button>
-
-                <div class="category">
-                    OTHER
-                </div>
-
-                <button class="nav-button" onclick="showCategory('settings', this)">
-                    ⚙ Settings
-                </button>
-
-            </aside>
-
-
-            <section class="client-content">
-
-                <div class="content-header">
-
-                    <h2 id="category-title">
-                        Combat
-                    </h2>
-
-                    <p id="category-description">
-                        Configure your combat modules.
-                    </p>
-
-                </div>
-
-
-                <div class="modules" id="modules">
-
-
-                    <div class="module">
-
-                        <div class="module-top">
-
-                            <div class="module-name">
-                                Aim Assist
-                            </div>
-
-                            <div
-                                class="switch"
-                                onclick="toggleSwitch(this)"
-                            ></div>
-
-                        </div>
-
-                        <div class="module-description">
-                            Helps your aim while fighting.
-                        </div>
-
-                    </div>
-
-
-                    <div class="module">
-
-                        <div class="module-top">
-
-                            <div class="module-name">
-                                Reach
-                            </div>
-
-                            <div
-                                class="switch"
-                                onclick="toggleSwitch(this)"
-                            ></div>
-
-                        </div>
-
-                        <div class="module-description">
-                            Configure your attack range.
-                        </div>
-
-                        <div class="slider-box">
-
-                            <div class="slider-header">
-                                <span>Range</span>
-                                <span id="reachValue">3.0</span>
-                            </div>
-
-                            <input
-                                type="range"
-                                min="3"
-                                max="6"
-                                step=".1"
-                                value="3"
-                                oninput="document.getElementById('reachValue').textContent = this.value"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="module">
-
-                        <div class="module-top">
-
-                            <div class="module-name">
-                                Velocity
-                            </div>
-
-                            <div
-                                class="switch"
-                                onclick="toggleSwitch(this)"
-                            ></div>
-
-                        </div>
-
-                        <div class="module-description">
-                            Configure knockback behaviour.
-                        </div>
-
-                    </div>
-
-
-                    <div class="module">
-
-                        <div class="module-top">
-
-                            <div class="module-name">
-                                Clicker
-                            </div>
-
-                            <div
-                                class="switch"
-                                onclick="toggleSwitch(this)"
-                            ></div>
-
-                        </div>
-
-                        <div class="module-description">
-                            Adjustable clicking module.
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="footer-status">
-
-                    <span>ASTRIX CLIENT v1.0</span>
-
-                    <span id="enabledCount">
-                        0 MODULES ENABLED
-                    </span>
-
-                </div>
-
-            </section>
+            <div class="content" id="content"></div>
 
         </div>
 
@@ -699,336 +830,444 @@
 
 <script>
 
-    function toggleSwitch(element) {
+    const gui = document.getElementById("gui");
+    const content = document.getElementById("content");
 
-        element.classList.toggle("on");
 
-        updateEnabledCount();
+    function toggle(element) {
+        element.classList.toggle("active");
     }
 
 
-    function updateEnabledCount() {
-
-        const enabled =
-            document.querySelectorAll(".switch.on").length;
-
-        document.getElementById("enabledCount").textContent =
-            enabled + " MODULE" + (enabled === 1 ? "" : "S") + " ENABLED";
+    function sliderValue(slider, output) {
+        document.getElementById(output).textContent = slider.value;
     }
 
 
-    function showCategory(category, button) {
+    function closeGui() {
+
+        gui.style.animation = "none";
+        gui.style.opacity = "0";
+        gui.style.transform = "scale(.85)";
+
+        setTimeout(() => {
+
+            gui.style.opacity = "1";
+            gui.style.transform = "scale(1)";
+            gui.style.animation = "guiOpen .35s cubic-bezier(.22,.8,.2,1)";
+
+        }, 500);
+    }
+
+
+    function keybind(element) {
+
+        if (element.classList.contains("waiting")) {
+
+            element.classList.remove("waiting");
+            element.textContent = "ESC";
+
+        } else {
+
+            element.classList.add("waiting");
+            element.textContent = "Press key...";
+
+            setTimeout(() => {
+
+                if (element.classList.contains("waiting")) {
+
+                    element.classList.remove("waiting");
+                    element.textContent = "RSHIFT";
+
+                }
+
+            }, 1200);
+
+        }
+    }
+
+
+    function selectTab(tab, button) {
 
         document
-            .querySelectorAll(".nav-button")
-            .forEach(btn => btn.classList.remove("active"));
+            .querySelectorAll(".tab")
+            .forEach(t => t.classList.remove("active"));
 
         button.classList.add("active");
 
-
-        const title =
-            document.getElementById("category-title");
-
-        const description =
-            document.getElementById("category-description");
-
-        const modules =
-            document.getElementById("modules");
-
-
-        if (category === "combat") {
-
-            title.textContent = "Combat";
-
-            description.textContent =
-                "Configure your combat modules.";
-
-            modules.innerHTML = `
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Aim Assist</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Helps your aim while fighting.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Reach</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-
-                    <div class="module-description">
-                        Configure your attack range.
-                    </div>
-
-                    <div class="slider-box">
-
-                        <div class="slider-header">
-                            <span>Range</span>
-                            <span id="reachValue">3.0</span>
-                        </div>
-
-                        <input
-                            type="range"
-                            min="3"
-                            max="6"
-                            step=".1"
-                            value="3"
-                            oninput="document.getElementById('reachValue').textContent=this.value"
-                        >
-
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Velocity</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Configure knockback behaviour.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Clicker</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Adjustable clicking module.
-                    </div>
-                </div>
-
-            `;
+        if (tab === "combat") {
+            renderCombat();
         }
 
-
-        else if (category === "visuals") {
-
-            title.textContent = "Visuals";
-
-            description.textContent =
-                "Customize your visual experience.";
-
-            modules.innerHTML = `
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">ESP</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Highlights entities in the game.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Fullbright</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Makes dark areas brighter.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Tracers</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Displays visual lines to entities.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Name Tags</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Displays entity names.
-                    </div>
-                </div>
-
-            `;
+        if (tab === "movement") {
+            renderMovement();
         }
 
-
-        else if (category === "movement") {
-
-            title.textContent = "Movement";
-
-            description.textContent =
-                "Configure movement modules.";
-
-            modules.innerHTML = `
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Sprint</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Automatically keeps sprint active.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Bunny Hop</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Movement enhancement module.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">No Slow</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Removes movement slowdown.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Safe Walk</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Helps prevent falling from edges.
-                    </div>
-                </div>
-
-            `;
+        if (tab === "render") {
+            renderRender();
         }
 
-
-        else if (category === "player") {
-
-            title.textContent = "Player";
-
-            description.textContent =
-                "Player and utility modules.";
-
-            modules.innerHTML = `
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">FPS Boost</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Optimizes visual settings for performance.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Auto Sprint</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Automatically activates sprint.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Coordinates</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Displays player coordinates.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">CPS Counter</div>
-                        <div class="switch" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Shows clicks per second.
-                    </div>
-                </div>
-
-            `;
+        if (tab === "settings") {
+            renderSettings();
         }
 
-
-        else if (category === "settings") {
-
-            title.textContent = "Settings";
-
-            description.textContent =
-                "Customize your Astrix Client.";
-
-            modules.innerHTML = `
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Blur Effects</div>
-                        <div class="switch on" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Enables interface blur effects.
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-top">
-                        <div class="module-name">Animations</div>
-                        <div class="switch on" onclick="toggleSwitch(this)"></div>
-                    </div>
-                    <div class="module-description">
-                        Enables UI animations.
-                    </div>
-                </div>
-
-                <div class="module">
-
-                    <div class="module-name">
-                        GUI Scale
-                    </div>
-
-                    <div class="slider-box">
-
-                        <div class="slider-header">
-                            <span>Scale</span>
-                            <span id="scaleValue">100%</span>
-                        </div>
-
-                        <input
-                            type="range"
-                            min="80"
-                            max="130"
-                            value="100"
-                            oninput="document.getElementById('scaleValue').textContent=this.value+'%'"
-                        >
-
-                    </div>
-
-                </div>
-
-            `;
+        if (tab === "config") {
+            renderConfig();
         }
-
-        updateEnabledCount();
     }
+
+
+    function toggleHTML(label) {
+
+        return `
+            <div class="row">
+                <div class="row-label">${label}</div>
+
+                <div
+                    class="toggle"
+                    onclick="toggle(this)"
+                ></div>
+            </div>
+        `;
+    }
+
+
+    function sliderHTML(label, id, min, max, value) {
+
+        return `
+            <div class="slider-row">
+
+                <div class="slider-label">
+                    ${label}
+                </div>
+
+                <div class="slider-container">
+
+                    <input
+                        class="slider"
+                        type="range"
+                        min="${min}"
+                        max="${max}"
+                        value="${value}"
+                        oninput="document.getElementById('${id}').textContent=this.value"
+                    >
+
+                    <span
+                        class="slider-value"
+                        id="${id}"
+                    >
+                        ${value}
+                    </span>
+
+                </div>
+
+            </div>
+        `;
+    }
+
+
+    function section(title, html) {
+
+        return `
+            <div class="section">
+
+                <div class="section-header">
+                    <span>${title}</span>
+                </div>
+
+                ${html}
+
+            </div>
+        `;
+    }
+
+
+    function renderCombat() {
+
+        content.innerHTML =
+
+            section("Aimbot",
+
+                toggleHTML("Enable") +
+
+                sliderHTML("FOV", "fovValue", 0, 90, 45) +
+
+                sliderHTML("Smoothness", "smoothValue", 0, 100, 50) +
+
+                `
+                <div class="row">
+
+                    <div class="row-label">
+                        Priority
+                    </div>
+
+                    <div class="dropdown">
+                        Distance
+                        <span>▼</span>
+                    </div>
+
+                </div>
+                `
+            )
+
+
+            +
+
+            section("KillAura",
+
+                toggleHTML("Enable") +
+
+                sliderHTML("Range", "rangeValue", 3, 6, 3) +
+
+                sliderHTML("APS", "apsValue", 4, 20, 10) +
+
+                toggleHTML("Multi-Target") +
+
+                toggleHTML("Auto Weapon")
+            )
+
+
+            +
+
+            section("Triggerbot",
+
+                toggleHTML("Enable") +
+
+                sliderHTML("Delay (ms)", "delayValue", 0, 500, 100)
+            );
+    }
+
+
+    function renderMovement() {
+
+        content.innerHTML =
+
+            section("Speedwalk",
+
+                toggleHTML("Enable") +
+
+                sliderHTML("Multiplier", "speedValue", 1, 5, 1) +
+
+                toggleHTML("Ground Only") +
+
+                toggleHTML("Strafe Modify")
+            )
+
+
+            +
+
+            section("Boatfly",
+
+                toggleHTML("Enable") +
+
+                sliderHTML("Vertical Speed", "verticalValue", 0, 5, 1) +
+
+                sliderHTML("Horizontal Speed", "horizontalValue", 0, 3, 1) +
+
+                toggleHTML("Glide Mode")
+            );
+    }
+
+
+    function renderRender() {
+
+        content.innerHTML =
+
+            section("ESP",
+
+                toggleHTML("Enable") +
+
+                toggleHTML("Boxes") +
+
+                toggleHTML("Tracers") +
+
+                toggleHTML("Health Bars") +
+
+                toggleHTML("Names") +
+
+                toggleHTML("Distance")
+            )
+
+
+            +
+
+            section("Colors",
+
+                `
+                <div class="row">
+
+                    <div class="row-label">
+                        Box Color
+                    </div>
+
+                    <input
+                        class="color-picker"
+                        type="color"
+                        value="#cc3333"
+                    >
+
+                </div>
+
+                <div class="row">
+
+                    <div class="row-label">
+                        Tracer Color
+                    </div>
+
+                    <input
+                        class="color-picker"
+                        type="color"
+                        value="#6633cc"
+                    >
+
+                </div>
+                `
+            );
+    }
+
+
+    function renderSettings() {
+
+        content.innerHTML =
+
+            section("Keybinds",
+
+                `
+                <div class="row">
+                    <div class="row-label">Toggle GUI</div>
+                    <div class="keybind" onclick="keybind(this)">RSHIFT</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">Aimbot</div>
+                    <div class="keybind" onclick="keybind(this)">R</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">KillAura</div>
+                    <div class="keybind" onclick="keybind(this)">K</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">ESP</div>
+                    <div class="keybind" onclick="keybind(this)">X</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">Triggerbot</div>
+                    <div class="keybind" onclick="keybind(this)">T</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">Speedwalk</div>
+                    <div class="keybind" onclick="keybind(this)">V</div>
+                </div>
+
+                <div class="row">
+                    <div class="row-label">Boatfly</div>
+                    <div class="keybind" onclick="keybind(this)">B</div>
+                </div>
+                `
+            )
+
+
+            +
+
+            section("Visual Settings",
+
+                sliderHTML(
+                    "GUI Scale",
+                    "guiScaleValue",
+                    50,
+                    150,
+                    100
+                )
+
+                +
+
+                toggleHTML("Show FPS")
+            );
+    }
+
+
+    function renderConfig() {
+
+        content.innerHTML =
+
+            section("Profile Manager",
+
+                `
+                <div class="current-profile">
+                    Current: default
+                </div>
+
+                <div class="button-row">
+
+                    <button class="button">
+                        Save
+                    </button>
+
+                    <button class="button">
+                        Load
+                    </button>
+
+                    <button class="button">
+                        New
+                    </button>
+
+                </div>
+
+                <div class="button-row">
+
+                    <button class="button">
+                        Delete
+                    </button>
+
+                    <button class="button">
+                        Rename
+                    </button>
+
+                    <button class="button">
+                        Export
+                    </button>
+
+                </div>
+                `
+            )
+
+
+            +
+
+            section("Profiles",
+
+                `
+                <div class="profile-list">
+
+                    <div class="profile">
+                        default
+                    </div>
+
+                    <div class="profile">
+                        PvP
+                    </div>
+
+                    <div class="profile">
+                        Hypixel
+                    </div>
+
+                    <div class="profile">
+                        Legit
+                    </div>
+
+                </div>
+                `
+            );
+    }
+
+
+    renderCombat();
 
 </script>
 
 </body>
 </html>
-```
