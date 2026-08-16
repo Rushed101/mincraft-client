@@ -1,725 +1,854 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Astrix Client</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background: #05070c;
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(80, 55, 180, 0.18),
-                    transparent 45%
-                ),
-                radial-gradient(
-                    circle at 15% 80%,
-                    rgba(35, 100, 255, 0.08),
-                    transparent 30%
-                );
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrix Client</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #05070c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(70, 55, 180, .18),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(20, 100, 255, .08),
+            transparent 30%
+        );
+}
 
-        nav {
-            position: relative;
-            z-index: 10;
+/* =========================================================
+   LANDING PAGE
+========================================================= */
 
-            width: 100%;
-            height: 76px;
+nav {
+    position: relative;
+    z-index: 10;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    height: 76px;
+    width: 100%;
 
-            background: rgba(5, 7, 12, 0.90);
-            border-bottom: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            backdrop-filter: blur(12px);
-        }
+    background: rgba(5, 7, 12, .9);
+    border-bottom: 1px solid rgba(255,255,255,.07);
 
-        .logo {
-            font-size: 21px;
-            font-weight: 800;
-            letter-spacing: 2px;
-        }
+    backdrop-filter: blur(12px);
+}
 
-        .logo span {
-            color: #4aa3ff;
-        }
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
 
-        .hero {
-            position: relative;
-            z-index: 2;
+.logo span {
+    color: #4aa3ff;
+}
 
-            min-height: calc(100vh - 76px);
+.hero {
+    position: relative;
+    z-index: 2;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+    min-height: calc(100vh - 76px);
 
-            text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-            padding: 100px 20px 120px;
-        }
+    text-align: center;
 
-        .badge {
-            display: inline-block;
+    padding: 100px 20px 120px;
+}
 
-            padding: 8px 16px;
-            margin-bottom: 26px;
+.badge {
+    padding: 8px 16px;
+    margin-bottom: 26px;
 
-            border-radius: 999px;
+    border-radius: 999px;
 
-            background: rgba(55,145,255,.08);
-            border: 1px solid rgba(55,145,255,.25);
+    background: rgba(55,145,255,.08);
+    border: 1px solid rgba(55,145,255,.25);
 
-            color: #69b1ff;
+    color: #69b1ff;
 
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
 
-        h1 {
-            margin-bottom: 24px;
+h1 {
+    margin-bottom: 24px;
 
-            font-size: clamp(48px, 9vw, 100px);
-            line-height: .95;
+    font-size: clamp(48px, 9vw, 100px);
+    line-height: .95;
 
-            font-weight: 900;
-            letter-spacing: -4px;
-        }
+    font-weight: 900;
+    letter-spacing: -4px;
+}
 
-        .blue {
-            color: #4da6ff;
-        }
+.blue {
+    color: #4da6ff;
+}
 
-        .description {
-            max-width: 620px;
-            margin-bottom: 36px;
+.description {
+    max-width: 620px;
 
-            color: #8e98a8;
+    margin-bottom: 36px;
 
-            font-size: 17px;
-            line-height: 1.6;
-        }
+    color: #8e98a8;
 
-        .download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+    font-size: 17px;
+    line-height: 1.6;
+}
 
-            min-width: 150px;
+.download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-            padding: 15px 30px;
+    min-width: 150px;
 
-            border-radius: 10px;
+    padding: 15px 30px;
 
-            background: #2388ff;
-            color: white;
+    border-radius: 10px;
 
-            text-decoration: none;
+    background: #2388ff;
+    color: white;
 
-            font-size: 16px;
-            font-weight: 700;
+    text-decoration: none;
 
-            box-shadow:
-                0 10px 35px rgba(35,136,255,.25);
+    font-size: 16px;
+    font-weight: 700;
 
-            transition: .25s ease;
-        }
+    box-shadow:
+        0 10px 35px rgba(35,136,255,.25);
 
-        .download:hover {
-            transform: translateY(-3px);
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
 
-            background: #3995ff;
+.download:hover {
+    transform: translateY(-3px);
+    background: #3995ff;
 
-            box-shadow:
-                0 15px 45px rgba(35,136,255,.4);
-        }
+    box-shadow:
+        0 15px 45px rgba(35,136,255,.4);
+}
 
+/* =========================================================
+   GUI PREVIEW
+========================================================= */
 
-        /* =====================================================
-           ASTRIX GUI
-        ===================================================== */
+.gui-container {
+    width: 100%;
 
-        .gui-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 80px;
-        }
+    display: flex;
+    justify-content: center;
 
-        .gui {
-            width: 500px;
-            min-height: 600px;
+    margin-top: 80px;
+}
 
-            position: relative;
+/*
+    Original C++:
+    winW = 500
+    winH = 600
 
-            background: rgba(20,20,31,.97);
+    Die GUI bleibt exakt 500x600 auf Desktop.
+*/
 
-            border: 1px solid rgba(80,80,110,.85);
+.gui {
+    position: relative;
 
-            box-shadow:
-                0 35px 100px rgba(0,0,0,.75),
-                0 0 80px rgba(90,55,180,.08);
+    width: 500px;
+    height: 600px;
 
-            text-align: left;
+    background: rgba(20,20,31,.95);
 
-            overflow: hidden;
+    border: 1px solid rgba(51,51,77,1);
 
-            transform-origin: center;
-            animation: guiOpen .35s cubic-bezier(.22,.8,.2,1);
-        }
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.7),
+        0 0 100px rgba(80,50,180,.08);
 
-        @keyframes guiOpen {
-            from {
-                opacity: 0;
-                transform: scale(.85);
-            }
+    overflow: hidden;
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    text-align: left;
 
+    transform-origin: center center;
 
-        /* TITLE BAR */
+    animation:
+        guiOpen .3s cubic-bezier(.22,.8,.2,1);
+}
 
-        .titlebar {
-            height: 40px;
+@keyframes guiOpen {
+    0% {
+        opacity: 0;
+        transform: scale(.85);
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-            padding: 0 10px 0 20px;
+/* =========================================================
+   TITLE BAR
+========================================================= */
 
-            background: #1f1f2e;
+.titlebar {
+    position: absolute;
 
-            border-bottom: 1px solid rgba(255,255,255,.04);
-        }
+    left: 0;
+    top: 0;
 
-        .title {
-            font-size: 13px;
-            font-weight: 600;
+    width: 500px;
+    height: 40px;
 
-            color: #e8e3f4;
+    display: flex;
+    align-items: center;
 
-            text-shadow:
-                1px 1px 2px rgba(0,0,0,.8);
-        }
+    padding-left: 20px;
 
-        .close {
-            width: 25px;
-            height: 25px;
+    background: rgba(31,31,46,1);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    z-index: 5;
+}
 
-            background: #4d1b20;
+.title {
+    color: rgba(230,205,255,1);
 
-            color: #ff6666;
+    font-size: 13px;
+    font-weight: 600;
 
-            border: none;
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,.8);
+}
 
-            font-size: 12px;
-            font-weight: bold;
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
-            cursor: pointer;
+.close {
+    position: absolute;
 
-            transition: .15s;
-        }
+    left: 465px;
+    top: 5px;
 
-        .close:hover {
-            background: #70252c;
-        }
+    width: 25px;
+    height: 25px;
 
+    border: none;
 
-        /* TABS */
+    background: rgba(77,26,26,1);
 
-        .tabs {
-            height: 35px;
+    color: #ff4d4d;
 
-            display: flex;
+    font-size: 13px;
+    font-weight: 700;
 
-            gap: 2px;
+    cursor: pointer;
 
-            padding: 0 5px;
+    transition: background .15s ease;
+}
 
-            margin-top: 5px;
-        }
+.close:hover {
+    background: #702b2b;
+}
 
-        .tab {
-            flex: 1;
+/* =========================================================
+   TABS
+========================================================= */
 
-            height: 35px;
+.tabs {
+    position: absolute;
 
-            border: none;
+    left: 5px;
+    top: 45px;
 
-            background: #17171f;
+    width: 490px;
+    height: 35px;
 
-            color: #80808b;
+    display: flex;
 
-            font-size: 11px;
+    gap: 2px;
+}
 
-            cursor: pointer;
+.tab {
+    position: relative;
 
-            position: relative;
+    height: 35px;
 
-            transition: .15s;
-        }
+    flex: 1;
 
-        .tab:hover {
-            background: #211d2c;
-            color: #aaa4b8;
-        }
+    border: none;
 
-        .tab.active {
-            background: #261a40;
-            color: #cbbcff;
-        }
+    cursor: pointer;
 
-        .tab.active::after {
-            content: "";
+    font-family: Arial, Helvetica, sans-serif;
 
-            position: absolute;
+    font-size: 11px;
 
-            left: 5px;
-            right: 5px;
-            bottom: 0;
+    transition:
+        background .12s ease,
+        color .12s ease;
+}
 
-            height: 2px;
+/*
+    C++:
+    tabW = (500 - 10) / 5 = 98
+*/
 
-            background: #6633cc;
-        }
+.tab {
+    width: 96px;
 
+    background: rgba(20,15,26,1);
+    color: rgba(128,128,128,1);
+}
 
-        /* CONTENT */
+.tab.active {
+    background: rgba(38,20,64,1);
+    color: rgba(204,153,255,1);
+}
 
-        .content {
-            height: 515px;
+.tab:hover {
+    background: rgba(45,25,70,1);
+    color: rgba(210,200,220,1);
+}
 
-            padding: 15px;
+.tab.active::after {
+    content: "";
 
-            overflow-y: auto;
-        }
+    position: absolute;
 
-        .content::-webkit-scrollbar {
-            width: 4px;
-        }
+    left: 5px;
+    bottom: 0;
 
-        .content::-webkit-scrollbar-track {
-            background: #111119;
-        }
+    width: calc(100% - 14px);
+    height: 2px;
 
-        .content::-webkit-scrollbar-thumb {
-            background: #343040;
-        }
+    background: rgba(102,51,204,1);
+}
 
+/* =========================================================
+   CONTENT
+========================================================= */
 
-        /* SECTION */
+.content {
+    position: absolute;
 
-        .section {
-            margin-bottom: 12px;
-        }
+    left: 15px;
+    top: 90px;
 
-        .section-header {
-            height: 30px;
+    width: 470px;
+    height: 495px;
 
-            display: flex;
-            align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-            position: relative;
-        }
+    padding-right: 5px;
+}
 
-        .section-header::before {
-            content: "";
+.content::-webkit-scrollbar {
+    width: 3px;
+}
 
-            width: 200px;
-            height: 1px;
+.content::-webkit-scrollbar-track {
+    background: rgba(10,10,16,.5);
+}
 
-            position: absolute;
+.content::-webkit-scrollbar-thumb {
+    background: rgba(55,55,75,1);
+}
 
-            left: 0;
-            top: 15px;
+/* =========================================================
+   SECTION HEADER
+========================================================= */
 
-            background: rgba(100,100,130,.45);
-        }
+.section-header {
+    position: relative;
 
-        .section-header span {
-            position: relative;
+    width: 470px;
+    height: 30px;
+}
 
-            margin-left: 210px;
+.section-line {
+    position: absolute;
 
-            white-space: nowrap;
+    left: 0;
+    top: 15px;
 
-            color: #b9b7c9;
+    width: 200px;
+    height: 1px;
 
-            font-size: 12px;
-            font-weight: 600;
-        }
+    background: rgba(77,77,128,.5);
+}
 
+.section-title {
+    position: absolute;
 
-        /* ROW */
+    left: 210px;
+    top: 5px;
 
-        .row {
-            min-height: 30px;
+    color: rgba(179,179,230,1);
 
-            display: flex;
-            align-items: center;
+    font-size: 12px;
+    font-weight: 600;
 
-            position: relative;
+    white-space: nowrap;
+}
 
-            color: #c4c4ca;
+/* =========================================================
+   ROW
+========================================================= */
 
-            font-size: 12px;
-        }
+.row {
+    position: relative;
 
-        .row-label {
-            width: 160px;
-        }
+    width: 470px;
+    height: 30px;
 
+    display: flex;
+    align-items: center;
+}
 
-        /* TOGGLE */
+.label {
+    position: absolute;
 
-        .toggle {
-            width: 40px;
-            height: 20px;
+    left: 0;
+    top: 7px;
 
-            position: relative;
+    width: 160px;
 
-            background: #261c1d;
+    color: rgba(204,204,204,1);
 
-            border: 1px solid #44414d;
+    font-size: 12px;
+}
 
-            cursor: pointer;
+/* =========================================================
+   TOGGLE
+========================================================= */
 
-            transition: .15s;
-        }
+.toggle {
+    position: absolute;
 
-        .toggle::after {
-            content: "";
+    left: 160px;
+    top: 5px;
 
-            position: absolute;
+    width: 40px;
+    height: 20px;
 
-            left: 0;
-            top: 0;
+    background: rgba(38,26,26,1);
 
-            width: 18px;
-            height: 18px;
+    border: 1px solid rgba(51,51,77,1);
 
-            background: #e7e7e7;
+    cursor: pointer;
 
-            border: 1px solid #333;
+    transition:
+        background .12s ease;
+}
 
-            transition: .15s;
-        }
+.toggle::after {
+    content: "";
 
-        .toggle.active {
-            background: #33804a;
-        }
+    position: absolute;
 
-        .toggle.active::after {
-            left: 20px;
-        }
+    left: 0;
+    top: 0;
 
+    width: 18px;
+    height: 18px;
 
-        /* SLIDER */
+    background: rgba(230,230,230,1);
 
-        .slider-row {
-            min-height: 40px;
+    border: 1px solid rgba(51,51,51,1);
 
-            display: flex;
-            align-items: center;
-        }
+    transition:
+        left .12s ease;
+}
 
-        .slider-label {
-            width: 180px;
+.toggle.active {
+    background: rgba(51,128,51,1);
+}
 
-            color: #c4c4ca;
+.toggle.active::after {
+    left: 20px;
+}
 
-            font-size: 12px;
-        }
+/* =========================================================
+   SLIDER
+========================================================= */
 
-        .slider-container {
-            width: 200px;
+.slider-row {
+    position: relative;
 
-            position: relative;
-        }
+    width: 470px;
+    height: 40px;
+}
 
-        .slider {
-            width: 200px;
-            height: 6px;
+.slider-label {
+    position: absolute;
 
-            appearance: none;
+    left: 0;
+    top: 13px;
 
-            background: #272731;
+    width: 180px;
 
-            outline: none;
+    color: rgba(204,204,204,1);
 
-            cursor: pointer;
-        }
+    font-size: 12px;
+}
 
-        .slider::-webkit-slider-thumb {
-            appearance: none;
+.slider-wrap {
+    position: absolute;
 
-            width: 12px;
-            height: 14px;
+    left: 180px;
+    top: 16px;
 
-            background: #e8e8e8;
+    width: 200px;
+    height: 14px;
+}
 
-            border: 1px solid #303030;
+.slider {
+    position: absolute;
 
-            cursor: pointer;
-        }
+    left: 0;
+    top: 0;
 
-        .slider::-moz-range-thumb {
-            width: 12px;
-            height: 14px;
+    width: 200px;
+    height: 6px;
 
-            background: #e8e8e8;
+    appearance: none;
+    -webkit-appearance: none;
 
-            border: 1px solid #303030;
+    background: rgba(38,38,51,1);
 
-            cursor: pointer;
-        }
+    outline: none;
 
-        .slider-value {
-            position: absolute;
+    cursor: pointer;
+}
 
-            right: -55px;
-            top: -5px;
+/*
+    C++:
+    drawFilledRect(sliderX, sliderY,
+                   sliderW, sliderH,
+                   0.15, 0.15, 0.2)
 
-            width: 45px;
+    Filled section:
+    0.3, 0.6, 0.9
+*/
 
-            color: #aaa7b7;
+.slider::-webkit-slider-runnable-track {
+    height: 6px;
 
-            font-size: 11px;
+    background:
+        linear-gradient(
+            to right,
+            rgba(77,153,230,1) var(--progress, 50%),
+            rgba(38,38,51,1) var(--progress, 50%)
+        );
+}
 
-            text-align: right;
-        }
+.slider::-moz-range-track {
+    height: 6px;
 
+    background: rgba(38,38,51,1);
+}
 
-        /* DROPDOWN */
+.slider::-moz-range-progress {
+    height: 6px;
 
-        .dropdown {
-            width: 120px;
-            height: 22px;
+    background: rgba(77,153,230,1);
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
 
-            padding: 0 6px;
+    width: 12px;
+    height: 14px;
 
-            background: #1f1f2e;
+    margin-top: -4px;
 
-            border: 1px solid #343442;
+    background: rgba(230,230,230,1);
 
-            color: #c9c8d0;
+    border: 1px solid rgba(51,51,51,1);
 
-            font-size: 11px;
+    cursor: pointer;
+}
 
-            cursor: pointer;
-        }
+.slider::-moz-range-thumb {
+    width: 12px;
+    height: 14px;
 
-        .dropdown:hover {
-            border-color: #55457a;
-        }
+    background: rgba(230,230,230,1);
 
+    border: 1px solid rgba(51,51,51,1);
 
-        /* COLOR */
+    cursor: pointer;
+}
 
-        .color-picker {
-            width: 50px;
-            height: 20px;
+.slider-value {
+    position: absolute;
 
-            background: #cc3333;
+    left: 210px;
+    top: -5px;
 
-            border: 1px solid #343442;
+    width: 45px;
 
-            cursor: pointer;
-        }
+    color: rgba(179,179,179,1);
 
+    font-size: 11px;
 
-        /* KEYBIND */
+    text-align: left;
+}
 
-        .keybind {
-            width: 100px;
-            height: 22px;
+/* =========================================================
+   DROPDOWN
+========================================================= */
 
-            display: flex;
-            align-items: center;
+.dropdown {
+    position: absolute;
 
-            padding-left: 5px;
+    left: 160px;
+    top: 4px;
 
-            background: #1f1f2e;
+    width: 120px;
+    height: 22px;
 
-            border: 1px solid #343442;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            color: #aaa7b7;
+    padding: 0 5px;
 
-            font-size: 11px;
+    background: rgba(31,31,46,1);
 
-            cursor: pointer;
-        }
+    border: 1px solid rgba(51,51,77,1);
 
-        .keybind:hover {
-            border-color: #604d88;
-        }
+    color: rgba(204,204,204,1);
 
-        .keybind.waiting {
-            background: #3b194b;
-            color: #d9baff;
-        }
+    font-size: 11px;
 
+    cursor: pointer;
+}
 
-        /* BUTTONS */
+.dropdown:hover {
+    border-color: rgba(102,76,153,1);
+}
 
-        .button {
-            min-width: 100px;
-            height: 30px;
+/* =========================================================
+   COLOR PICKER
+========================================================= */
 
-            padding: 0 14px;
+.color {
+    position: absolute;
 
-            background: #1f172c;
+    left: 160px;
+    top: 5px;
 
-            border: 1px solid #45335f;
+    width: 50px;
+    height: 20px;
 
-            color: #e3e0e9;
+    padding: 0;
 
-            font-size: 11px;
+    border: 1px solid rgba(51,51,77,1);
 
-            cursor: pointer;
+    background: transparent;
 
-            transition: .15s;
-        }
+    cursor: pointer;
 
-        .button:hover {
-            background: #332052;
+    appearance: none;
+    -webkit-appearance: none;
+}
 
-            border-color: #6a4a96;
-        }
+.color::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
 
-        .button-row {
-            display: flex;
-            gap: 5px;
+.color::-webkit-color-swatch {
+    border: none;
+}
 
-            margin-bottom: 10px;
-        }
+/* =========================================================
+   KEYBIND
+========================================================= */
 
+.keybind {
+    position: absolute;
 
-        /* PROFILE */
+    left: 160px;
+    top: 4px;
 
-        .current-profile {
-            margin: 5px;
+    width: 100px;
+    height: 22px;
 
-            color: #aaa7b7;
+    display: flex;
+    align-items: center;
 
-            font-size: 12px;
-        }
+    padding-left: 5px;
 
-        .profile-list {
-            display: flex;
-            flex-direction: column;
+    background: rgba(31,31,46,1);
 
-            gap: 5px;
-        }
+    border: 1px solid rgba(51,51,77,1);
 
-        .profile {
-            height: 25px;
+    color: rgba(179,179,179,1);
 
-            display: flex;
-            align-items: center;
+    font-size: 11px;
 
-            padding-left: 10px;
+    cursor: pointer;
+}
 
-            background: #191923;
+.keybind:hover {
+    border-color: rgba(102,76,153,1);
+}
 
-            border: 1px solid #2f2e39;
+.keybind.waiting {
+    background: rgba(77,26,102,1);
 
-            color: #aaa7b7;
+    color: rgba(230,179,255,1);
+}
 
-            font-size: 11px;
+/* =========================================================
+   BUTTONS
+========================================================= */
 
-            cursor: pointer;
-        }
+.button-row {
+    height: 40px;
 
-        .profile:hover {
-            background: #28203b;
-            border-color: #50406d;
-        }
+    display: flex;
+    align-items: center;
 
+    gap: 5px;
+}
 
-        @media (max-width: 600px) {
+.button {
+    width: 100px;
+    height: 30px;
 
-            .hero {
-                padding-top: 70px;
-            }
+    background: rgba(31,20,46,1);
 
-            .gui-wrapper {
-                margin-top: 55px;
-            }
+    border: 1px solid rgba(69,51,95,1);
 
-            .gui {
-                width: 94vw;
-                min-height: 600px;
-            }
+    color: rgba(230,230,230,1);
 
-            .content {
-                padding: 10px;
-            }
+    font-size: 11px;
 
-            .section-header span {
-                margin-left: 130px;
-            }
+    cursor: pointer;
 
-            .section-header::before {
-                width: 125px;
-            }
+    transition: .12s ease;
+}
 
-            .slider-label {
-                width: 125px;
-            }
+.button:hover {
+    background: rgba(51,31,82,1);
 
-            .row-label {
-                width: 125px;
-            }
+    border-color: rgba(106,74,150,1);
+}
 
-            .slider-container,
-            .slider {
-                width: 150px;
-            }
-        }
-    </style>
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.current-profile {
+    width: 100%;
+
+    height: 25px;
+
+    padding-left: 5px;
+
+    display: flex;
+    align-items: center;
+
+    color: rgba(153,153,204,1);
+
+    font-size: 12px;
+}
+
+.profile {
+    width: 460px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+
+    margin-bottom: 5px;
+
+    background: rgba(25,25,35,1);
+
+    border: 1px solid rgba(47,47,57,1);
+
+    color: rgba(179,179,179,1);
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.profile:hover {
+    background: rgba(40,32,59,1);
+
+    border-color: rgba(80,64,109,1);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 540px) {
+
+    .gui-container {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding: 0 10px;
+    }
+
+    .gui {
+        flex-shrink: 0;
+    }
+
+    .hero {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -729,7 +858,6 @@
         <span>ASTRIX</span> CLIENT
     </div>
 </nav>
-
 
 <main class="hero">
 
@@ -755,13 +883,11 @@
     </a>
 
 
-    <!-- =====================================================
-         ASTRIX CLICK GUI
-    ====================================================== -->
+    <div class="gui-container">
 
-    <div class="gui-wrapper">
+        <div class="gui">
 
-        <div class="gui" id="gui">
+            <!-- TITLE -->
 
             <div class="titlebar">
 
@@ -769,55 +895,41 @@
                     Astrix Client v3.0
                 </div>
 
-                <button
-                    class="close"
-                    onclick="closeGui()"
-                >
+                <button class="close">
                     X
                 </button>
 
             </div>
 
 
+            <!-- TABS -->
+
             <div class="tabs">
 
-                <button
-                    class="tab active"
-                    onclick="selectTab('combat', this)"
-                >
+                <button class="tab active" data-tab="combat">
                     Combat
                 </button>
 
-                <button
-                    class="tab"
-                    onclick="selectTab('movement', this)"
-                >
+                <button class="tab" data-tab="movement">
                     Movement
                 </button>
 
-                <button
-                    class="tab"
-                    onclick="selectTab('render', this)"
-                >
+                <button class="tab" data-tab="render">
                     Render
                 </button>
 
-                <button
-                    class="tab"
-                    onclick="selectTab('settings', this)"
-                >
+                <button class="tab" data-tab="settings">
                     Settings
                 </button>
 
-                <button
-                    class="tab"
-                    onclick="selectTab('config', this)"
-                >
+                <button class="tab" data-tab="config">
                     Config
                 </button>
 
             </div>
 
+
+            <!-- CONTENT -->
 
             <div class="content" id="content"></div>
 
@@ -830,444 +942,655 @@
 
 <script>
 
-    const gui = document.getElementById("gui");
-    const content = document.getElementById("content");
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function section(title, content) {
+
+    return `
+        <div class="section">
+
+            <div class="section-header">
+
+                <div class="section-line"></div>
+
+                <div class="section-title">
+                    ${title}
+                </div>
+
+            </div>
+
+            ${content}
+
+        </div>
+    `;
+}
 
 
-    function toggle(element) {
-        element.classList.toggle("active");
+function toggle(label) {
+
+    return `
+        <div class="row">
+
+            <div class="label">
+                ${label}
+            </div>
+
+            <div
+                class="toggle"
+                onclick="this.classList.toggle('active')"
+            ></div>
+
+        </div>
+    `;
+}
+
+
+function slider(label, id, min, max, value, suffix = "") {
+
+    return `
+        <div class="slider-row">
+
+            <div class="slider-label">
+                ${label}
+            </div>
+
+            <div class="slider-wrap">
+
+                <input
+                    class="slider"
+                    type="range"
+                    min="${min}"
+                    max="${max}"
+                    value="${value}"
+                    data-output="${id}"
+                    oninput="updateSlider(this)"
+                >
+
+                <div
+                    class="slider-value"
+                    id="${id}"
+                >
+                    ${value}${suffix}
+                </div>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+function updateSlider(slider) {
+
+    const output =
+        document.getElementById(
+            slider.dataset.output
+        );
+
+    if (!output) return;
+
+    output.textContent =
+        slider.value;
+
+    const min =
+        parseFloat(slider.min);
+
+    const max =
+        parseFloat(slider.max);
+
+    const value =
+        parseFloat(slider.value);
+
+    const percentage =
+        ((value - min) / (max - min)) * 100;
+
+    slider.style.setProperty(
+        "--progress",
+        percentage + "%"
+    );
+}
+
+
+function dropdown(label) {
+
+    return `
+        <div class="row">
+
+            <div class="label">
+                ${label}
+            </div>
+
+            <div
+                class="dropdown"
+                onclick="cycleDropdown(this)"
+            >
+                <span>Distance</span>
+                <span>▼</span>
+            </div>
+
+        </div>
+    `;
+}
+
+
+function cycleDropdown(element) {
+
+    const values = [
+        "Distance",
+        "Health",
+        "Angle"
+    ];
+
+    const span =
+        element.querySelector("span");
+
+    const current =
+        values.indexOf(span.textContent);
+
+    span.textContent =
+        values[(current + 1) % values.length];
+}
+
+
+function color(label, value) {
+
+    return `
+        <div class="row">
+
+            <div class="label">
+                ${label}
+            </div>
+
+            <input
+                class="color"
+                type="color"
+                value="${value}"
+            >
+
+        </div>
+    `;
+}
+
+
+function keybind(label, key) {
+
+    return `
+        <div class="row">
+
+            <div class="label">
+                ${label}
+            </div>
+
+            <div
+                class="keybind"
+                onclick="pickKey(this)"
+            >
+                ${key}
+            </div>
+
+        </div>
+    `;
+}
+
+
+function pickKey(element) {
+
+    if (element.classList.contains("waiting")) {
+
+        element.classList.remove("waiting");
+
+        element.textContent = "ESC";
+
+        return;
     }
 
+    element.classList.add("waiting");
 
-    function sliderValue(slider, output) {
-        document.getElementById(output).textContent = slider.value;
-    }
+    element.textContent =
+        "Press key...";
+
+    const handler = function(event) {
+
+        element.textContent =
+            event.key.toUpperCase();
+
+        element.classList.remove("waiting");
+
+        document.removeEventListener(
+            "keydown",
+            handler
+        );
+    };
+
+    document.addEventListener(
+        "keydown",
+        handler
+    );
+}
 
 
-    function closeGui() {
+/* =========================================================
+   COMBAT
+========================================================= */
 
-        gui.style.animation = "none";
-        gui.style.opacity = "0";
-        gui.style.transform = "scale(.85)";
+function renderCombat() {
 
-        setTimeout(() => {
+    content.innerHTML =
 
-            gui.style.opacity = "1";
-            gui.style.transform = "scale(1)";
-            gui.style.animation = "guiOpen .35s cubic-bezier(.22,.8,.2,1)";
+        section(
+            "Aimbot",
 
-        }, 500);
-    }
+            toggle("Enable") +
+
+            slider(
+                "FOV",
+                "fov",
+                0,
+                90,
+                45
+            ) +
+
+            slider(
+                "Smoothness",
+                "smoothness",
+                0,
+                100,
+                50
+            ) +
+
+            dropdown("Priority")
+        )
+
+        +
+
+        section(
+            "KillAura",
+
+            toggle("Enable") +
+
+            slider(
+                "Range",
+                "range",
+                3,
+                6,
+                3
+            ) +
+
+            slider(
+                "APS",
+                "aps",
+                4,
+                20,
+                10
+            ) +
+
+            toggle("Multi-Target") +
+
+            toggle("Auto Weapon")
+        )
+
+        +
+
+        section(
+            "Triggerbot",
+
+            toggle("Enable") +
+
+            slider(
+                "Delay (ms)",
+                "delay",
+                0,
+                500,
+                100
+            )
+        );
+
+    initSliders();
+}
 
 
-    function keybind(element) {
+/* =========================================================
+   MOVEMENT
+========================================================= */
 
-        if (element.classList.contains("waiting")) {
+function renderMovement() {
 
-            element.classList.remove("waiting");
-            element.textContent = "ESC";
+    content.innerHTML =
 
-        } else {
+        section(
+            "Speedwalk",
 
-            element.classList.add("waiting");
-            element.textContent = "Press key...";
+            toggle("Enable") +
+
+            slider(
+                "Multiplier",
+                "multiplier",
+                1,
+                5,
+                1
+            ) +
+
+            toggle("Ground Only") +
+
+            toggle("Strafe Modify")
+        )
+
+        +
+
+        section(
+            "Boatfly",
+
+            toggle("Enable") +
+
+            slider(
+                "Vertical Speed",
+                "vertical",
+                0,
+                5,
+                1
+            ) +
+
+            slider(
+                "Horizontal Speed",
+                "horizontal",
+                0,
+                3,
+                1
+            ) +
+
+            toggle("Glide Mode")
+        );
+
+    initSliders();
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderRender() {
+
+    content.innerHTML =
+
+        section(
+            "ESP",
+
+            toggle("Enable") +
+
+            toggle("Boxes") +
+
+            toggle("Tracers") +
+
+            toggle("Health Bars") +
+
+            toggle("Names") +
+
+            toggle("Distance")
+        )
+
+        +
+
+        section(
+            "Colors",
+
+            color(
+                "Box Color",
+                "#cc3333"
+            ) +
+
+            color(
+                "Tracer Color",
+                "#6633cc"
+            )
+        );
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function renderSettings() {
+
+    content.innerHTML =
+
+        section(
+            "Keybinds",
+
+            keybind("Toggle GUI", "RSHIFT") +
+
+            keybind("Aimbot", "R") +
+
+            keybind("KillAura", "K") +
+
+            keybind("ESP", "X") +
+
+            keybind("Triggerbot", "T") +
+
+            keybind("Speedwalk", "V") +
+
+            keybind("Boatfly", "B")
+        )
+
+        +
+
+        section(
+            "Visual Settings",
+
+            slider(
+                "GUI Scale",
+                "guiScale",
+                50,
+                150,
+                100
+            ) +
+
+            toggle("Show FPS")
+        );
+
+    initSliders();
+}
+
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+function renderConfig() {
+
+    content.innerHTML =
+
+        section(
+            "Profile Manager",
+
+            `
+            <div class="current-profile">
+                Current: default
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="button"
+                    onclick="alert('Profile gespeichert')"
+                >
+                    Save
+                </button>
+
+                <button
+                    class="button"
+                    onclick="alert('Profile geladen')"
+                >
+                    Load
+                </button>
+
+                <button
+                    class="button"
+                    onclick="alert('Neues Profil erstellt')"
+                >
+                    New
+                </button>
+
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="button"
+                    onclick="alert('Profile gelöscht')"
+                >
+                    Delete
+                </button>
+
+                <button
+                    class="button"
+                    onclick="alert('Rename')"
+                >
+                    Rename
+                </button>
+
+                <button
+                    class="button"
+                    onclick="alert('Profile exportiert')"
+                >
+                    Export
+                </button>
+
+            </div>
+            `
+        )
+
+        +
+
+        section(
+            "Profiles",
+
+            `
+            <div class="profile">
+                default
+            </div>
+
+            <div class="profile">
+                profile_1
+            </div>
+
+            <div class="profile">
+                PvP
+            </div>
+
+            <div class="profile">
+                Legit
+            </div>
+            `
+        );
+}
+
+
+/* =========================================================
+   SLIDER INITIALIZATION
+========================================================= */
+
+function initSliders() {
+
+    document
+        .querySelectorAll(".slider")
+        .forEach(slider => {
+
+            updateSlider(slider);
+
+        });
+}
+
+
+/* =========================================================
+   TAB SYSTEM
+========================================================= */
+
+const content =
+    document.getElementById("content");
+
+document
+    .querySelectorAll(".tab")
+    .forEach(tab => {
+
+        tab.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .querySelectorAll(".tab")
+                    .forEach(t =>
+                        t.classList.remove("active")
+                    );
+
+                this.classList.add("active");
+
+                const selected =
+                    this.dataset.tab;
+
+                if (selected === "combat")
+                    renderCombat();
+
+                if (selected === "movement")
+                    renderMovement();
+
+                if (selected === "render")
+                    renderRender();
+
+                if (selected === "settings")
+                    renderSettings();
+
+                if (selected === "config")
+                    renderConfig();
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+document
+    .querySelector(".close")
+    .addEventListener(
+        "click",
+        function() {
+
+            const gui =
+                document.querySelector(".gui");
+
+            gui.style.transition =
+                "opacity .2s ease, transform .2s ease";
+
+            gui.style.opacity = "0";
+            gui.style.transform =
+                "scale(.85)";
 
             setTimeout(() => {
 
-                if (element.classList.contains("waiting")) {
+                gui.style.opacity = "1";
+                gui.style.transform =
+                    "scale(1)";
 
-                    element.classList.remove("waiting");
-                    element.textContent = "RSHIFT";
-
-                }
-
-            }, 1200);
+            }, 450);
 
         }
-    }
+    );
 
 
-    function selectTab(tab, button) {
+/* =========================================================
+   START
+========================================================= */
 
-        document
-            .querySelectorAll(".tab")
-            .forEach(t => t.classList.remove("active"));
-
-        button.classList.add("active");
-
-        if (tab === "combat") {
-            renderCombat();
-        }
-
-        if (tab === "movement") {
-            renderMovement();
-        }
-
-        if (tab === "render") {
-            renderRender();
-        }
-
-        if (tab === "settings") {
-            renderSettings();
-        }
-
-        if (tab === "config") {
-            renderConfig();
-        }
-    }
-
-
-    function toggleHTML(label) {
-
-        return `
-            <div class="row">
-                <div class="row-label">${label}</div>
-
-                <div
-                    class="toggle"
-                    onclick="toggle(this)"
-                ></div>
-            </div>
-        `;
-    }
-
-
-    function sliderHTML(label, id, min, max, value) {
-
-        return `
-            <div class="slider-row">
-
-                <div class="slider-label">
-                    ${label}
-                </div>
-
-                <div class="slider-container">
-
-                    <input
-                        class="slider"
-                        type="range"
-                        min="${min}"
-                        max="${max}"
-                        value="${value}"
-                        oninput="document.getElementById('${id}').textContent=this.value"
-                    >
-
-                    <span
-                        class="slider-value"
-                        id="${id}"
-                    >
-                        ${value}
-                    </span>
-
-                </div>
-
-            </div>
-        `;
-    }
-
-
-    function section(title, html) {
-
-        return `
-            <div class="section">
-
-                <div class="section-header">
-                    <span>${title}</span>
-                </div>
-
-                ${html}
-
-            </div>
-        `;
-    }
-
-
-    function renderCombat() {
-
-        content.innerHTML =
-
-            section("Aimbot",
-
-                toggleHTML("Enable") +
-
-                sliderHTML("FOV", "fovValue", 0, 90, 45) +
-
-                sliderHTML("Smoothness", "smoothValue", 0, 100, 50) +
-
-                `
-                <div class="row">
-
-                    <div class="row-label">
-                        Priority
-                    </div>
-
-                    <div class="dropdown">
-                        Distance
-                        <span>▼</span>
-                    </div>
-
-                </div>
-                `
-            )
-
-
-            +
-
-            section("KillAura",
-
-                toggleHTML("Enable") +
-
-                sliderHTML("Range", "rangeValue", 3, 6, 3) +
-
-                sliderHTML("APS", "apsValue", 4, 20, 10) +
-
-                toggleHTML("Multi-Target") +
-
-                toggleHTML("Auto Weapon")
-            )
-
-
-            +
-
-            section("Triggerbot",
-
-                toggleHTML("Enable") +
-
-                sliderHTML("Delay (ms)", "delayValue", 0, 500, 100)
-            );
-    }
-
-
-    function renderMovement() {
-
-        content.innerHTML =
-
-            section("Speedwalk",
-
-                toggleHTML("Enable") +
-
-                sliderHTML("Multiplier", "speedValue", 1, 5, 1) +
-
-                toggleHTML("Ground Only") +
-
-                toggleHTML("Strafe Modify")
-            )
-
-
-            +
-
-            section("Boatfly",
-
-                toggleHTML("Enable") +
-
-                sliderHTML("Vertical Speed", "verticalValue", 0, 5, 1) +
-
-                sliderHTML("Horizontal Speed", "horizontalValue", 0, 3, 1) +
-
-                toggleHTML("Glide Mode")
-            );
-    }
-
-
-    function renderRender() {
-
-        content.innerHTML =
-
-            section("ESP",
-
-                toggleHTML("Enable") +
-
-                toggleHTML("Boxes") +
-
-                toggleHTML("Tracers") +
-
-                toggleHTML("Health Bars") +
-
-                toggleHTML("Names") +
-
-                toggleHTML("Distance")
-            )
-
-
-            +
-
-            section("Colors",
-
-                `
-                <div class="row">
-
-                    <div class="row-label">
-                        Box Color
-                    </div>
-
-                    <input
-                        class="color-picker"
-                        type="color"
-                        value="#cc3333"
-                    >
-
-                </div>
-
-                <div class="row">
-
-                    <div class="row-label">
-                        Tracer Color
-                    </div>
-
-                    <input
-                        class="color-picker"
-                        type="color"
-                        value="#6633cc"
-                    >
-
-                </div>
-                `
-            );
-    }
-
-
-    function renderSettings() {
-
-        content.innerHTML =
-
-            section("Keybinds",
-
-                `
-                <div class="row">
-                    <div class="row-label">Toggle GUI</div>
-                    <div class="keybind" onclick="keybind(this)">RSHIFT</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">Aimbot</div>
-                    <div class="keybind" onclick="keybind(this)">R</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">KillAura</div>
-                    <div class="keybind" onclick="keybind(this)">K</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">ESP</div>
-                    <div class="keybind" onclick="keybind(this)">X</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">Triggerbot</div>
-                    <div class="keybind" onclick="keybind(this)">T</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">Speedwalk</div>
-                    <div class="keybind" onclick="keybind(this)">V</div>
-                </div>
-
-                <div class="row">
-                    <div class="row-label">Boatfly</div>
-                    <div class="keybind" onclick="keybind(this)">B</div>
-                </div>
-                `
-            )
-
-
-            +
-
-            section("Visual Settings",
-
-                sliderHTML(
-                    "GUI Scale",
-                    "guiScaleValue",
-                    50,
-                    150,
-                    100
-                )
-
-                +
-
-                toggleHTML("Show FPS")
-            );
-    }
-
-
-    function renderConfig() {
-
-        content.innerHTML =
-
-            section("Profile Manager",
-
-                `
-                <div class="current-profile">
-                    Current: default
-                </div>
-
-                <div class="button-row">
-
-                    <button class="button">
-                        Save
-                    </button>
-
-                    <button class="button">
-                        Load
-                    </button>
-
-                    <button class="button">
-                        New
-                    </button>
-
-                </div>
-
-                <div class="button-row">
-
-                    <button class="button">
-                        Delete
-                    </button>
-
-                    <button class="button">
-                        Rename
-                    </button>
-
-                    <button class="button">
-                        Export
-                    </button>
-
-                </div>
-                `
-            )
-
-
-            +
-
-            section("Profiles",
-
-                `
-                <div class="profile-list">
-
-                    <div class="profile">
-                        default
-                    </div>
-
-                    <div class="profile">
-                        PvP
-                    </div>
-
-                    <div class="profile">
-                        Hypixel
-                    </div>
-
-                    <div class="profile">
-                        Legit
-                    </div>
-
-                </div>
-                `
-            );
-    }
-
-
-    renderCombat();
+renderCombat();
 
 </script>
 
 </body>
 </html>
+```
