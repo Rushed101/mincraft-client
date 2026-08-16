@@ -4,18 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Astrix Client</title>
-
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 body {
     min-height: 100vh;
     background: #05070c;
@@ -23,14 +20,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
-
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-
     background:
         radial-gradient(
             circle at 50% 0%,
@@ -43,835 +38,159 @@ body::before {
             transparent 30%
         );
 }
-
 /* =========================================================
    LANDING PAGE
 ========================================================= */
-
 nav {
     position: relative;
     z-index: 10;
-
     height: 76px;
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: rgba(5, 7, 12, .9);
     border-bottom: 1px solid rgba(255,255,255,.07);
-
     backdrop-filter: blur(12px);
 }
-
 .logo {
     font-size: 21px;
     font-weight: 800;
     letter-spacing: 2px;
 }
-
 .logo span {
     color: #4aa3ff;
 }
-
 .hero {
     position: relative;
     z-index: 2;
-
     min-height: calc(100vh - 76px);
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     text-align: center;
-
     padding: 100px 20px 120px;
 }
-
 .badge {
     padding: 8px 16px;
     margin-bottom: 26px;
-
     border-radius: 999px;
-
     background: rgba(55,145,255,.08);
     border: 1px solid rgba(55,145,255,.25);
-
     color: #69b1ff;
-
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
 }
-
 h1 {
     margin-bottom: 24px;
-
     font-size: clamp(48px, 9vw, 100px);
     line-height: .95;
-
     font-weight: 900;
     letter-spacing: -4px;
 }
-
 .blue {
     color: #4da6ff;
 }
-
 .description {
     max-width: 620px;
-
     margin-bottom: 36px;
-
     color: #8e98a8;
-
     font-size: 17px;
     line-height: 1.6;
 }
-
 .download {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-width: 150px;
-
     padding: 15px 30px;
-
     border-radius: 10px;
-
     background: #2388ff;
     color: white;
-
     text-decoration: none;
-
     font-size: 16px;
     font-weight: 700;
-
     box-shadow:
         0 10px 35px rgba(35,136,255,.25);
-
     transition:
         transform .25s ease,
         background .25s ease,
         box-shadow .25s ease;
 }
-
 .download:hover {
     transform: translateY(-3px);
     background: #3995ff;
-
     box-shadow:
         0 15px 45px rgba(35,136,255,.4);
 }
-
 /* =========================================================
    GUI PREVIEW
 ========================================================= */
-
 .gui-container {
     width: 100%;
-
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
+    align-items: center;
     margin-top: 80px;
 }
 
-/*
-    Original C++:
-    winW = 500
-    winH = 600
+.preview-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #e0e0ff;
+    margin-bottom: 22px;
+    text-shadow: 0 0 20px rgba(120, 80, 255, 0.35);
+}
 
-    Die GUI bleibt exakt 500x600 auf Desktop.
-*/
-
-.gui {
-    position: relative;
-
-    width: 500px;
-    height: 600px;
-
-    background: rgba(20,20,31,.95);
-
-    border: 1px solid rgba(51,51,77,1);
-
+.gui-preview {
+    max-width: 920px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(80, 70, 140, 0.45);
     box-shadow:
         0 35px 100px rgba(0,0,0,.7),
-        0 0 100px rgba(80,50,180,.08);
-
+        0 0 80px rgba(80,50,180,.12);
     overflow: hidden;
-
-    text-align: left;
-
-    transform-origin: center center;
-
-    animation:
-        guiOpen .3s cubic-bezier(.22,.8,.2,1);
 }
 
-@keyframes guiOpen {
-    0% {
-        opacity: 0;
-        transform: scale(.85);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* =========================================================
-   TITLE BAR
-========================================================= */
-
-.titlebar {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 500px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-
-    padding-left: 20px;
-
-    background: rgba(31,31,46,1);
-
-    z-index: 5;
-}
-
-.title {
-    color: rgba(230,205,255,1);
-
-    font-size: 13px;
-    font-weight: 600;
-
-    text-shadow:
-        1px 1px 2px rgba(0,0,0,.8);
-}
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
-.close {
-    position: absolute;
-
-    left: 465px;
-    top: 5px;
-
-    width: 25px;
-    height: 25px;
-
-    border: none;
-
-    background: rgba(77,26,26,1);
-
-    color: #ff4d4d;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: background .15s ease;
-}
-
-.close:hover {
-    background: #702b2b;
-}
-
-/* =========================================================
-   TABS
-========================================================= */
-
-.tabs {
-    position: absolute;
-
-    left: 5px;
-    top: 45px;
-
-    width: 490px;
-    height: 35px;
-
-    display: flex;
-
-    gap: 2px;
-}
-
-.tab {
-    position: relative;
-
-    height: 35px;
-
-    flex: 1;
-
-    border: none;
-
-    cursor: pointer;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 11px;
-
-    transition:
-        background .12s ease,
-        color .12s ease;
-}
-
-/*
-    C++:
-    tabW = (500 - 10) / 5 = 98
-*/
-
-.tab {
-    width: 96px;
-
-    background: rgba(20,15,26,1);
-    color: rgba(128,128,128,1);
-}
-
-.tab.active {
-    background: rgba(38,20,64,1);
-    color: rgba(204,153,255,1);
-}
-
-.tab:hover {
-    background: rgba(45,25,70,1);
-    color: rgba(210,200,220,1);
-}
-
-.tab.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 5px;
-    bottom: 0;
-
-    width: calc(100% - 14px);
-    height: 2px;
-
-    background: rgba(102,51,204,1);
-}
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.content {
-    position: absolute;
-
-    left: 15px;
-    top: 90px;
-
-    width: 470px;
-    height: 495px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    padding-right: 5px;
-}
-
-.content::-webkit-scrollbar {
-    width: 3px;
-}
-
-.content::-webkit-scrollbar-track {
-    background: rgba(10,10,16,.5);
-}
-
-.content::-webkit-scrollbar-thumb {
-    background: rgba(55,55,75,1);
-}
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-header {
-    position: relative;
-
-    width: 470px;
-    height: 30px;
-}
-
-.section-line {
-    position: absolute;
-
-    left: 0;
-    top: 15px;
-
-    width: 200px;
-    height: 1px;
-
-    background: rgba(77,77,128,.5);
-}
-
-.section-title {
-    position: absolute;
-
-    left: 210px;
-    top: 5px;
-
-    color: rgba(179,179,230,1);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    white-space: nowrap;
-}
-
-/* =========================================================
-   ROW
-========================================================= */
-
-.row {
-    position: relative;
-
-    width: 470px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-}
-
-.label {
-    position: absolute;
-
-    left: 0;
-    top: 7px;
-
-    width: 160px;
-
-    color: rgba(204,204,204,1);
-
-    font-size: 12px;
-}
-
-/* =========================================================
-   TOGGLE
-========================================================= */
-
-.toggle {
-    position: absolute;
-
-    left: 160px;
-    top: 5px;
-
-    width: 40px;
-    height: 20px;
-
-    background: rgba(38,26,26,1);
-
-    border: 1px solid rgba(51,51,77,1);
-
-    cursor: pointer;
-
-    transition:
-        background .12s ease;
-}
-
-.toggle::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 18px;
-    height: 18px;
-
-    background: rgba(230,230,230,1);
-
-    border: 1px solid rgba(51,51,51,1);
-
-    transition:
-        left .12s ease;
-}
-
-.toggle.active {
-    background: rgba(51,128,51,1);
-}
-
-.toggle.active::after {
-    left: 20px;
-}
-
-/* =========================================================
-   SLIDER
-========================================================= */
-
-.slider-row {
-    position: relative;
-
-    width: 470px;
-    height: 40px;
-}
-
-.slider-label {
-    position: absolute;
-
-    left: 0;
-    top: 13px;
-
-    width: 180px;
-
-    color: rgba(204,204,204,1);
-
-    font-size: 12px;
-}
-
-.slider-wrap {
-    position: absolute;
-
-    left: 180px;
-    top: 16px;
-
-    width: 200px;
-    height: 14px;
-}
-
-.slider {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 200px;
-    height: 6px;
-
-    appearance: none;
-    -webkit-appearance: none;
-
-    background: rgba(38,38,51,1);
-
-    outline: none;
-
-    cursor: pointer;
-}
-
-/*
-    C++:
-    drawFilledRect(sliderX, sliderY,
-                   sliderW, sliderH,
-                   0.15, 0.15, 0.2)
-
-    Filled section:
-    0.3, 0.6, 0.9
-*/
-
-.slider::-webkit-slider-runnable-track {
-    height: 6px;
-
-    background:
-        linear-gradient(
-            to right,
-            rgba(77,153,230,1) var(--progress, 50%),
-            rgba(38,38,51,1) var(--progress, 50%)
-        );
-}
-
-.slider::-moz-range-track {
-    height: 6px;
-
-    background: rgba(38,38,51,1);
-}
-
-.slider::-moz-range-progress {
-    height: 6px;
-
-    background: rgba(77,153,230,1);
-}
-
-.slider::-webkit-slider-thumb {
-    appearance: none;
-    -webkit-appearance: none;
-
-    width: 12px;
-    height: 14px;
-
-    margin-top: -4px;
-
-    background: rgba(230,230,230,1);
-
-    border: 1px solid rgba(51,51,51,1);
-
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 12px;
-    height: 14px;
-
-    background: rgba(230,230,230,1);
-
-    border: 1px solid rgba(51,51,51,1);
-
-    cursor: pointer;
-}
-
-.slider-value {
-    position: absolute;
-
-    left: 210px;
-    top: -5px;
-
-    width: 45px;
-
-    color: rgba(179,179,179,1);
-
-    font-size: 11px;
-
-    text-align: left;
-}
-
-/* =========================================================
-   DROPDOWN
-========================================================= */
-
-.dropdown {
-    position: absolute;
-
-    left: 160px;
-    top: 4px;
-
-    width: 120px;
-    height: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5px;
-
-    background: rgba(31,31,46,1);
-
-    border: 1px solid rgba(51,51,77,1);
-
-    color: rgba(204,204,204,1);
-
-    font-size: 11px;
-
-    cursor: pointer;
-}
-
-.dropdown:hover {
-    border-color: rgba(102,76,153,1);
-}
-
-/* =========================================================
-   COLOR PICKER
-========================================================= */
-
-.color {
-    position: absolute;
-
-    left: 160px;
-    top: 5px;
-
-    width: 50px;
-    height: 20px;
-
-    padding: 0;
-
-    border: 1px solid rgba(51,51,77,1);
-
-    background: transparent;
-
-    cursor: pointer;
-
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.color::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-.color::-webkit-color-swatch {
-    border: none;
-}
-
-/* =========================================================
-   KEYBIND
-========================================================= */
-
-.keybind {
-    position: absolute;
-
-    left: 160px;
-    top: 4px;
-
-    width: 100px;
-    height: 22px;
-
-    display: flex;
-    align-items: center;
-
-    padding-left: 5px;
-
-    background: rgba(31,31,46,1);
-
-    border: 1px solid rgba(51,51,77,1);
-
-    color: rgba(179,179,179,1);
-
-    font-size: 11px;
-
-    cursor: pointer;
-}
-
-.keybind:hover {
-    border-color: rgba(102,76,153,1);
-}
-
-.keybind.waiting {
-    background: rgba(77,26,102,1);
-
-    color: rgba(230,179,255,1);
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.button-row {
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-}
-
-.button {
-    width: 100px;
-    height: 30px;
-
-    background: rgba(31,20,46,1);
-
-    border: 1px solid rgba(69,51,95,1);
-
-    color: rgba(230,230,230,1);
-
-    font-size: 11px;
-
-    cursor: pointer;
-
-    transition: .12s ease;
-}
-
-.button:hover {
-    background: rgba(51,31,82,1);
-
-    border-color: rgba(106,74,150,1);
-}
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.current-profile {
+.gui-preview img {
     width: 100%;
-
-    height: 25px;
-
-    padding-left: 5px;
-
-    display: flex;
-    align-items: center;
-
-    color: rgba(153,153,204,1);
-
-    font-size: 12px;
-}
-
-.profile {
-    width: 460px;
-    height: 25px;
-
-    display: flex;
-    align-items: center;
-
-    padding-left: 10px;
-
-    margin-bottom: 5px;
-
-    background: rgba(25,25,35,1);
-
-    border: 1px solid rgba(47,47,57,1);
-
-    color: rgba(179,179,179,1);
-
-    font-size: 11px;
-
-    cursor: pointer;
-}
-
-.profile:hover {
-    background: rgba(40,32,59,1);
-
-    border-color: rgba(80,64,109,1);
+    height: auto;
+    display: block;
 }
 
 /* =========================================================
    MOBILE
 ========================================================= */
-
 @media (max-width: 540px) {
-
-    .gui-container {
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        padding: 0 10px;
-    }
-
-    .gui {
-        flex-shrink: 0;
-    }
-
     .hero {
         padding-left: 10px;
         padding-right: 10px;
     }
+    .preview-title {
+        font-size: 22px;
+    }
 }
 </style>
 </head>
-
 <body>
-
 <nav>
     <div class="logo">
         <span>ASTRIX</span> CLIENT
     </div>
 </nav>
-
 <main class="hero">
-
     <div class="badge">
         MINECRAFT CLIENT
     </div>
-
     <h1>
         Built for <span class="blue">PvP</span>
     </h1>
-
     <p class="description">
         A powerful client designed for competitive Minecraft PvP.
     </p>
-
     <a
         class="download"
         href="https://github.com/Rushed101/mincraft-client/raw/refs/heads/main/astrixclient.exe"
@@ -880,715 +199,12 @@ h1 {
         Jetzt Holen
     </a>
 
-
     <div class="gui-container">
-
-        <div class="gui">
-
-            <!-- TITLE -->
-
-            <div class="titlebar">
-
-                <div class="title">
-                    Astrix Client v3.0
-                </div>
-
-                <button class="close">
-                    X
-                </button>
-
-            </div>
-
-
-            <!-- TABS -->
-
-            <div class="tabs">
-
-                <button class="tab active" data-tab="combat">
-                    Combat
-                </button>
-
-                <button class="tab" data-tab="movement">
-                    Movement
-                </button>
-
-                <button class="tab" data-tab="render">
-                    Render
-                </button>
-
-                <button class="tab" data-tab="settings">
-                    Settings
-                </button>
-
-                <button class="tab" data-tab="config">
-                    Config
-                </button>
-
-            </div>
-
-
-            <!-- CONTENT -->
-
-            <div class="content" id="content"></div>
-
+        <div class="preview-title">Preview</div>
+        <div class="gui-preview">
+            <img src="dein-bild.png" alt="Astrix Client Preview">
         </div>
-
     </div>
-
 </main>
-
-
-<script>
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function section(title, content) {
-
-    return `
-        <div class="section">
-
-            <div class="section-header">
-
-                <div class="section-line"></div>
-
-                <div class="section-title">
-                    ${title}
-                </div>
-
-            </div>
-
-            ${content}
-
-        </div>
-    `;
-}
-
-
-function toggle(label) {
-
-    return `
-        <div class="row">
-
-            <div class="label">
-                ${label}
-            </div>
-
-            <div
-                class="toggle"
-                onclick="this.classList.toggle('active')"
-            ></div>
-
-        </div>
-    `;
-}
-
-
-function slider(label, id, min, max, value, suffix = "") {
-
-    return `
-        <div class="slider-row">
-
-            <div class="slider-label">
-                ${label}
-            </div>
-
-            <div class="slider-wrap">
-
-                <input
-                    class="slider"
-                    type="range"
-                    min="${min}"
-                    max="${max}"
-                    value="${value}"
-                    data-output="${id}"
-                    oninput="updateSlider(this)"
-                >
-
-                <div
-                    class="slider-value"
-                    id="${id}"
-                >
-                    ${value}${suffix}
-                </div>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-function updateSlider(slider) {
-
-    const output =
-        document.getElementById(
-            slider.dataset.output
-        );
-
-    if (!output) return;
-
-    output.textContent =
-        slider.value;
-
-    const min =
-        parseFloat(slider.min);
-
-    const max =
-        parseFloat(slider.max);
-
-    const value =
-        parseFloat(slider.value);
-
-    const percentage =
-        ((value - min) / (max - min)) * 100;
-
-    slider.style.setProperty(
-        "--progress",
-        percentage + "%"
-    );
-}
-
-
-function dropdown(label) {
-
-    return `
-        <div class="row">
-
-            <div class="label">
-                ${label}
-            </div>
-
-            <div
-                class="dropdown"
-                onclick="cycleDropdown(this)"
-            >
-                <span>Distance</span>
-                <span>▼</span>
-            </div>
-
-        </div>
-    `;
-}
-
-
-function cycleDropdown(element) {
-
-    const values = [
-        "Distance",
-        "Health",
-        "Angle"
-    ];
-
-    const span =
-        element.querySelector("span");
-
-    const current =
-        values.indexOf(span.textContent);
-
-    span.textContent =
-        values[(current + 1) % values.length];
-}
-
-
-function color(label, value) {
-
-    return `
-        <div class="row">
-
-            <div class="label">
-                ${label}
-            </div>
-
-            <input
-                class="color"
-                type="color"
-                value="${value}"
-            >
-
-        </div>
-    `;
-}
-
-
-function keybind(label, key) {
-
-    return `
-        <div class="row">
-
-            <div class="label">
-                ${label}
-            </div>
-
-            <div
-                class="keybind"
-                onclick="pickKey(this)"
-            >
-                ${key}
-            </div>
-
-        </div>
-    `;
-}
-
-
-function pickKey(element) {
-
-    if (element.classList.contains("waiting")) {
-
-        element.classList.remove("waiting");
-
-        element.textContent = "ESC";
-
-        return;
-    }
-
-    element.classList.add("waiting");
-
-    element.textContent =
-        "Press key...";
-
-    const handler = function(event) {
-
-        element.textContent =
-            event.key.toUpperCase();
-
-        element.classList.remove("waiting");
-
-        document.removeEventListener(
-            "keydown",
-            handler
-        );
-    };
-
-    document.addEventListener(
-        "keydown",
-        handler
-    );
-}
-
-
-/* =========================================================
-   COMBAT
-========================================================= */
-
-function renderCombat() {
-
-    content.innerHTML =
-
-        section(
-            "Aimbot",
-
-            toggle("Enable") +
-
-            slider(
-                "FOV",
-                "fov",
-                0,
-                90,
-                45
-            ) +
-
-            slider(
-                "Smoothness",
-                "smoothness",
-                0,
-                100,
-                50
-            ) +
-
-            dropdown("Priority")
-        )
-
-        +
-
-        section(
-            "KillAura",
-
-            toggle("Enable") +
-
-            slider(
-                "Range",
-                "range",
-                3,
-                6,
-                3
-            ) +
-
-            slider(
-                "APS",
-                "aps",
-                4,
-                20,
-                10
-            ) +
-
-            toggle("Multi-Target") +
-
-            toggle("Auto Weapon")
-        )
-
-        +
-
-        section(
-            "Triggerbot",
-
-            toggle("Enable") +
-
-            slider(
-                "Delay (ms)",
-                "delay",
-                0,
-                500,
-                100
-            )
-        );
-
-    initSliders();
-}
-
-
-/* =========================================================
-   MOVEMENT
-========================================================= */
-
-function renderMovement() {
-
-    content.innerHTML =
-
-        section(
-            "Speedwalk",
-
-            toggle("Enable") +
-
-            slider(
-                "Multiplier",
-                "multiplier",
-                1,
-                5,
-                1
-            ) +
-
-            toggle("Ground Only") +
-
-            toggle("Strafe Modify")
-        )
-
-        +
-
-        section(
-            "Boatfly",
-
-            toggle("Enable") +
-
-            slider(
-                "Vertical Speed",
-                "vertical",
-                0,
-                5,
-                1
-            ) +
-
-            slider(
-                "Horizontal Speed",
-                "horizontal",
-                0,
-                3,
-                1
-            ) +
-
-            toggle("Glide Mode")
-        );
-
-    initSliders();
-}
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderRender() {
-
-    content.innerHTML =
-
-        section(
-            "ESP",
-
-            toggle("Enable") +
-
-            toggle("Boxes") +
-
-            toggle("Tracers") +
-
-            toggle("Health Bars") +
-
-            toggle("Names") +
-
-            toggle("Distance")
-        )
-
-        +
-
-        section(
-            "Colors",
-
-            color(
-                "Box Color",
-                "#cc3333"
-            ) +
-
-            color(
-                "Tracer Color",
-                "#6633cc"
-            )
-        );
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function renderSettings() {
-
-    content.innerHTML =
-
-        section(
-            "Keybinds",
-
-            keybind("Toggle GUI", "RSHIFT") +
-
-            keybind("Aimbot", "R") +
-
-            keybind("KillAura", "K") +
-
-            keybind("ESP", "X") +
-
-            keybind("Triggerbot", "T") +
-
-            keybind("Speedwalk", "V") +
-
-            keybind("Boatfly", "B")
-        )
-
-        +
-
-        section(
-            "Visual Settings",
-
-            slider(
-                "GUI Scale",
-                "guiScale",
-                50,
-                150,
-                100
-            ) +
-
-            toggle("Show FPS")
-        );
-
-    initSliders();
-}
-
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-function renderConfig() {
-
-    content.innerHTML =
-
-        section(
-            "Profile Manager",
-
-            `
-            <div class="current-profile">
-                Current: default
-            </div>
-
-            <div class="button-row">
-
-                <button
-                    class="button"
-                    onclick="alert('Profile gespeichert')"
-                >
-                    Save
-                </button>
-
-                <button
-                    class="button"
-                    onclick="alert('Profile geladen')"
-                >
-                    Load
-                </button>
-
-                <button
-                    class="button"
-                    onclick="alert('Neues Profil erstellt')"
-                >
-                    New
-                </button>
-
-            </div>
-
-            <div class="button-row">
-
-                <button
-                    class="button"
-                    onclick="alert('Profile gelöscht')"
-                >
-                    Delete
-                </button>
-
-                <button
-                    class="button"
-                    onclick="alert('Rename')"
-                >
-                    Rename
-                </button>
-
-                <button
-                    class="button"
-                    onclick="alert('Profile exportiert')"
-                >
-                    Export
-                </button>
-
-            </div>
-            `
-        )
-
-        +
-
-        section(
-            "Profiles",
-
-            `
-            <div class="profile">
-                default
-            </div>
-
-            <div class="profile">
-                profile_1
-            </div>
-
-            <div class="profile">
-                PvP
-            </div>
-
-            <div class="profile">
-                Legit
-            </div>
-            `
-        );
-}
-
-
-/* =========================================================
-   SLIDER INITIALIZATION
-========================================================= */
-
-function initSliders() {
-
-    document
-        .querySelectorAll(".slider")
-        .forEach(slider => {
-
-            updateSlider(slider);
-
-        });
-}
-
-
-/* =========================================================
-   TAB SYSTEM
-========================================================= */
-
-const content =
-    document.getElementById("content");
-
-document
-    .querySelectorAll(".tab")
-    .forEach(tab => {
-
-        tab.addEventListener(
-            "click",
-            function() {
-
-                document
-                    .querySelectorAll(".tab")
-                    .forEach(t =>
-                        t.classList.remove("active")
-                    );
-
-                this.classList.add("active");
-
-                const selected =
-                    this.dataset.tab;
-
-                if (selected === "combat")
-                    renderCombat();
-
-                if (selected === "movement")
-                    renderMovement();
-
-                if (selected === "render")
-                    renderRender();
-
-                if (selected === "settings")
-                    renderSettings();
-
-                if (selected === "config")
-                    renderConfig();
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
-document
-    .querySelector(".close")
-    .addEventListener(
-        "click",
-        function() {
-
-            const gui =
-                document.querySelector(".gui");
-
-            gui.style.transition =
-                "opacity .2s ease, transform .2s ease";
-
-            gui.style.opacity = "0";
-            gui.style.transform =
-                "scale(.85)";
-
-            setTimeout(() => {
-
-                gui.style.opacity = "1";
-                gui.style.transform =
-                    "scale(1)";
-
-            }, 450);
-
-        }
-    );
-
-
-/* =========================================================
-   START
-========================================================= */
-
-renderCombat();
-
-</script>
-
 </body>
 </html>
-
