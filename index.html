@@ -25,12 +25,12 @@
             overflow-x: hidden;
         }
 
-        /* Hintergrund */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
+            z-index: 0;
 
             background:
                 radial-gradient(
@@ -45,7 +45,6 @@
                 );
         }
 
-        /* Navigation */
         nav {
             position: relative;
             z-index: 10;
@@ -59,6 +58,8 @@
 
             background: rgba(5, 7, 12, 0.90);
             border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+            backdrop-filter: blur(12px);
         }
 
         .logo {
@@ -71,7 +72,6 @@
             color: #4aa3ff;
         }
 
-        /* Hauptbereich */
         .hero {
             position: relative;
             z-index: 2;
@@ -87,7 +87,6 @@
             padding: 100px 20px 120px;
         }
 
-        /* Badge */
         .badge {
             display: inline-block;
 
@@ -106,7 +105,6 @@
             letter-spacing: 1px;
         }
 
-        /* Überschrift */
         h1 {
             margin-bottom: 24px;
 
@@ -123,7 +121,6 @@
             color: #4da6ff;
         }
 
-        /* Beschreibung */
         .description {
             max-width: 620px;
 
@@ -135,7 +132,6 @@
             line-height: 1.6;
         }
 
-        /* Download Button */
         .download {
             display: inline-flex;
             align-items: center;
@@ -155,7 +151,10 @@
             font-size: 16px;
             font-weight: 700;
 
-            box-shadow: 0 10px 35px rgba(35, 136, 255, 0.25);
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 35px rgba(35, 136, 255, 0.25);
 
             transition:
                 transform 0.25s ease,
@@ -168,14 +167,14 @@
 
             background: #3995ff;
 
-            box-shadow: 0 15px 45px rgba(35, 136, 255, 0.40);
+            box-shadow:
+                0 15px 45px rgba(35, 136, 255, 0.40);
         }
 
         .download:active {
             transform: translateY(-1px);
         }
 
-        /* Großes Bild */
         .preview {
             width: min(1400px, 95vw);
 
@@ -203,7 +202,6 @@
             object-fit: cover;
         }
 
-        /* Mobile */
         @media (max-width: 600px) {
             nav {
                 height: 65px;
@@ -246,7 +244,7 @@
         </div>
 
         <h1>
-            Built for  <span class="blue">PvP</span>
+            Built for <span class="blue">PvP</span>
         </h1>
 
         <p class="description">
@@ -254,12 +252,27 @@
             cleanes und flüssiges Spielerlebnis.
         </p>
 
-        <a class="download" href="#">
+        <!--
+            =====================================================
+            GITHUB DOWNLOAD
+            =====================================================
+
+            ÄNDERE NUR DIE URL UNTEN.
+
+            Beispiel:
+            https://github.com/USERNAME/REPOSITORY/raw/refs/heads/main/AstrixClient.jar
+        -->
+
+        <a
+            class="download"
+            href="https://github.com/USERNAME/REPOSITORY/raw/refs/heads/main/AstrixClient.jar"
+            download
+        >
             Jetzt Holen
         </a>
 
         <div class="preview">
-            <img src="1.png" alt="Minecraft Client Vorschau">
+            <img src="1.png" alt="Astrix Client Vorschau">
         </div>
 
     </main>
