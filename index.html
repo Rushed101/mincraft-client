@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova Client</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #05070c;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hintergrund */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(45, 140, 255, 0.18),
+                    transparent 45%
+                ),
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(20, 100, 255, 0.08),
+                    transparent 30%
+                );
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            z-index: 10;
+
+            width: 100%;
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(5, 7, 12, 0.90);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #4aa3ff;
+        }
+
+        /* Hauptbereich */
+        .hero {
+            position: relative;
+            z-index: 2;
+
+            min-height: calc(100vh - 76px);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 100px 20px 120px;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+
+            padding: 8px 16px;
+            margin-bottom: 26px;
+
+            border-radius: 999px;
+
+            background: rgba(55, 145, 255, 0.08);
+            border: 1px solid rgba(55, 145, 255, 0.25);
+
+            color: #69b1ff;
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Überschrift */
+        h1 {
+            margin-bottom: 24px;
+
+            font-size: clamp(48px, 9vw, 100px);
+            line-height: 0.95;
+
+            font-weight: 900;
+            letter-spacing: -4px;
+
+            color: #ffffff;
+        }
+
+        .blue {
+            color: #4da6ff;
+        }
+
+        /* Beschreibung */
+        .description {
+            max-width: 620px;
+
+            margin-bottom: 36px;
+
+            color: #8e98a8;
+
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* Download Button */
+        .download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 150px;
+
+            padding: 15px 30px;
+
+            border-radius: 10px;
+
+            background: #2388ff;
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            box-shadow: 0 10px 35px rgba(35, 136, 255, 0.25);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .download:hover {
+            transform: translateY(-3px);
+
+            background: #3995ff;
+
+            box-shadow: 0 15px 45px rgba(35, 136, 255, 0.40);
+        }
+
+        .download:active {
+            transform: translateY(-1px);
+        }
+
+        /* Großes Bild */
+        .preview {
+            width: min(1400px, 95vw);
+
+            margin-top: 80px;
+
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            background: #080b12;
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+
+            box-shadow:
+                0 35px 100px rgba(0, 0, 0, 0.70),
+                0 0 100px rgba(30, 130, 255, 0.08);
+        }
+
+        .preview img {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            object-fit: cover;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            nav {
+                height: 65px;
+            }
+
+            .hero {
+                min-height: calc(100vh - 65px);
+                padding-top: 70px;
+            }
+
+            h1 {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .preview {
+                margin-top: 55px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <span>NOVA</span> CLIENT
+        </div>
+    </nav>
+
+    <main class="hero">
+
+        <div class="badge">
+            MINECRAFT CLIENT
+        </div>
+
+        <h1>
+            Überleg dir <span class="blue">was</span>
+        </h1>
+
+        <p class="description">
+            Ein moderner Minecraft Client für ein schnelles,
+            cleanes und flüssiges Spielerlebnis.
+        </p>
+
+        <a class="download" href="#">
+            Jetzt Holen
+        </a>
+
+        <div class="preview">
+            <img src="1.png" alt="Minecraft Client Vorschau">
+        </div>
+
+    </main>
+
+</body>
+</html>
