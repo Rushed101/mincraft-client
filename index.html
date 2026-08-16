@@ -62,6 +62,12 @@ h1 {
     color: #8e98a8;
     font-size: 17px;
 }
+.button-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .download {
     display: inline-flex;
     padding: 15px 30px;
@@ -76,6 +82,22 @@ h1 {
 .download:hover {
     transform: translateY(-3px);
     background: #3995ff;
+}
+.btn-secondary {
+    display: inline-flex;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background: #1a1a2e;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid #3a3a55;
+    transition: .25s;
+}
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    background: #25253a;
+    border-color: #5a5a80;
 }
 
 /* Preview */
@@ -313,9 +335,18 @@ input[type=range]::-webkit-slider-thumb {
     <div class="badge">MINECRAFT CLIENT</div>
     <h1>Built for <span class="blue">PvP</span></h1>
     <p class="description">A powerful client designed for competitive Minecraft PvP.</p>
-    <a class="download" href="https://github.com/Rushed101/mincraft-client/raw/refs/heads/main/astrixclient.exe" download>
-        Jetzt Holen
-    </a>
+    
+    <div class="button-group">
+        <a class="download" href="https://github.com/Rushed101/mincraft-client/raw/refs/heads/main/astrixclient.exe" download>
+            Jetzt Holen
+        </a>
+        <a class="btn-secondary" href="#" target="_blank">
+            SourceCode
+        </a>
+        <a class="btn-secondary" href="#" target="_blank">
+            Discord
+        </a>
+    </div>
 
     <div class="gui-container">
         <div class="preview-title">Preview</div>
@@ -505,14 +536,11 @@ input[type=range]::-webkit-slider-thumb {
 </main>
 
 <script>
-// Tab Switching - wichtig!
+// Tab Switching
 document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
-        // Alle Tabs und Contents zurücksetzen
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        
-        // Aktiven Tab + Content setzen
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
     });
