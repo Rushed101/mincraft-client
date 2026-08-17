@@ -74,6 +74,14 @@ nav {
     position: relative;
     z-index: 2;
 }
+
+/* Logo über dem Badge */
+.hero-logo {
+    width: 110px;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 0 18px rgba(126, 200, 255, 0.45));
+}
+
 .badge {
     padding: 8px 16px;
     margin-bottom: 26px;
@@ -355,6 +363,9 @@ input[type=range]::-webkit-slider-thumb {
 </nav>
 
 <main class="hero">
+    <!-- Logo -->
+    <img src="1.png" alt="Astrix Logo" class="hero-logo">
+
     <div class="badge">MINECRAFT CLIENT</div>
     <h1>Built for <span class="blue">PvP</span></h1>
     <p class="description">A powerful client designed for competitive Minecraft PvP.</p>
