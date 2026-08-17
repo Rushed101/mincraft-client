@@ -11,6 +11,7 @@ body {
     background: #05070c;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 body::before {
     content: "";
@@ -21,6 +22,36 @@ body::before {
         radial-gradient(circle at 50% 0%, rgba(70, 55, 180, .18), transparent 45%),
         radial-gradient(circle at 15% 80%, rgba(20, 100, 255, .08), transparent 30%);
 }
+
+/* Sterne */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.star {
+    position: absolute;
+    background: #7ec8ff;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float linear infinite;
+}
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0.3;
+    }
+}
+
 nav {
     height: 76px;
     display: flex;
@@ -29,6 +60,8 @@ nav {
     background: rgba(5, 7, 12, .9);
     border-bottom: 1px solid rgba(255,255,255,.07);
     backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 10;
 }
 .logo { font-size: 21px; font-weight: 800; letter-spacing: 2px; }
 .logo span { color: #4aa3ff; }
@@ -38,6 +71,8 @@ nav {
     align-items: center;
     text-align: center;
     padding: 80px 20px 100px;
+    position: relative;
+    z-index: 2;
 }
 .badge {
     padding: 8px 16px;
@@ -311,6 +346,10 @@ input[type=range]::-webkit-slider-thumb {
 </style>
 </head>
 <body>
+
+<!-- Sterne im Hintergrund -->
+<div class="stars" id="stars"></div>
+
 <nav>
     <div class="logo"><span>ASTRIX</span> CLIENT</div>
 </nav>
@@ -520,6 +559,30 @@ input[type=range]::-webkit-slider-thumb {
 </main>
 
 <script>
+// Sterne generieren
+const starsContainer = document.getElementById('stars');
+const starCount = 60;
+
+for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    
+    const size = Math.random() * 2.5 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    
+    const duration = Math.random() * 15 + 10;
+    const delay = Math.random() * 10;
+    
+    star.style.animationDuration = duration + 's';
+    star.style.animationDelay = delay + 's';
+    
+    starsContainer.appendChild(star);
+}
+
 // Tab Switching
 document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
