@@ -2149,7 +2149,7 @@ public:
         
         // Title bar
         renderer.drawFilledRect(winX, winY, winW, 40, 0.12f, 0.12f, 0.18f, alpha);
-        renderer.drawTextWithShadow("Nova Client v3.0", winX + 20, winY + 12, 0.9f, 0.8f, 1.0f, 1.0f);
+        renderer.drawTextWithShadow("Astrix Client v3.0", winX + 20, winY + 12, 0.9f, 0.8f, 1.0f, 1.0f);
         
         // Close button
         float closeX = winX + winW - 35;
@@ -2568,7 +2568,7 @@ public:
 // SECTION 18: MAIN CLIENT - FINAL INTEGRATION
 // ============================================================
 
-class NovaClient {
+class AstravaClient {
 private:
     ConfigManager config;
     MemoryReader memory;
@@ -2589,7 +2589,7 @@ private:
     std::thread mainThread;
     
 public:
-    NovaClient() {
+    Astra() {
         // Initialize components
         if (!memory.initialize()) {
             std::cout << "Failed to initialize memory reader!" << std::endl;
@@ -2607,10 +2607,10 @@ public:
         gui = new CompleteClickGUI(config, renderer);
         
         // Start main loop
-        mainThread = std::thread(&NovaClient::run, this);
+                mainThread = std::thread(&AstrixClient::run, this);
     }
     
-    ~NovaClient() {
+    ~AstrixClient() {
         running = false;
         if (mainThread.joinable()) {
             mainThread.join();
@@ -2742,7 +2742,7 @@ public:
 
 class HookManager {
 private:
-    static NovaClient* client;
+    static AstrixClient* client;
     
     // Hook function pointers
     typedef void (*RenderHook)();
@@ -2757,7 +2757,7 @@ private:
     MouseHook originalMouse = nullptr;
     
 public:
-    static void initialize(NovaClient* cl) {
+    static void initialize(AstrixClient* cl) {
         client = cl;
         
         // Would hook functions here
@@ -2803,7 +2803,7 @@ public:
 };
 
 // Initialize static member
-NovaClient* HookManager::client = nullptr;
+AstrixClient* HookManager::client = nullptr;
 
 // ============================================================
 // SECTION 20: DLL/SO ENTRY POINT
@@ -2821,7 +2821,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
             freopen("CONIN$", "r", stdin);
             
             // Initialize client
-            NovaClient* client = new NovaClient();
+            AstrixClient* client = new AstrixClient();
             HookManager::initialize(client);
             
             // Install hooks
@@ -2829,7 +2829,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
             // MH_CreateHook(&SomeFunction, &HookManager::HOOK_Render, (void**)&originalRender);
             // MH_EnableHook(MH_ALL_HOOKS);
             
-            std::cout << "Nova Client loaded successfully!" << std::endl;
+            std::cout << "Astrix Client loaded successfully!" << std::endl;
             std::cout << "Press INS key to open GUI" << std::endl;
             break;
             
@@ -2845,11 +2845,11 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 #else // Linux
 
 __attribute__((constructor)) void init() {
-    NovaClient* client = new NovaClient();
+    AstrixClient* client = new AstrixClient();
     HookManager::initialize(client);
     
     // Install hooks using LD_PRELOAD techniques
-    std::cout << "Nova Client loaded successfully!" << std::endl;
+    std::cout << "Astrix Client loaded successfully!" << std::endl;
     std::cout << "Press INS key to open GUI" << std::endl;
 }
 
@@ -2870,16 +2870,16 @@ __attribute__((destructor)) void cleanup() {
 
 class Simulator {
 private:
-    NovaClient* client;
+    AstrixClient* client;
     bool running = true;
     
 public:
     Simulator() {
-        client = new NovaClient();
+        client = new AstrixClient();
         HookManager::initialize(client);
         
         // Simulate game loop
-        std::cout << "=== Nova Client Simulation ===" << std::endl;
+        std::cout << "=== Astrix Client Simulation ===" << std::endl;
         std::cout << "Commands:" << std::endl;
         std::cout << "  i - Toggle GUI" << std::endl;
         std::cout << "  a - Toggle Aimbot" << std::endl;
